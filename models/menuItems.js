@@ -10,7 +10,7 @@ const { Schema, model } = mongoose
 
 const menuItemsSchema = new Schema(
     {
-        // later, enumerat this? enum[appetizer, entree, dessert]
+        // later, enumerate this? enum[appetizer, entree, dessert]
         course: {
             type: String,
             enum: ['Appetizer', 'Entree', 'Dessert'],
