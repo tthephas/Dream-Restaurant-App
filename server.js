@@ -31,7 +31,7 @@ middleware(app)
 ////////////////////
 
 app.use('/auth', UserRouter)
-app.use('/restaurantControllers', RestaurantRouter)
+app.use('/restaurant', RestaurantRouter)
 
 // Home route
 app.get('/', (req, res) => {
@@ -90,12 +90,12 @@ app.get('/', (req, res) => {
 // 		.catch(err => console.log('The following error occurred ', err)) 
 // })
 //CREATE
-app.post('/restaurant', (req, res) => {
-	const newRest = req.body
+// app.post('/restaurant', (req, res) => {
+// 	const newRest = req.body
 
-	// res.send(newRest)
-	// console.log(newRest)
-}) 
+// 	// res.send(newRest)
+// 	// console.log(newRest)
+// }) 
 
 
 

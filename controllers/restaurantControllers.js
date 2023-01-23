@@ -83,10 +83,10 @@ router.post('/', (req, res) => {
 // edit route -> GET that takes us to the edit form view
 router.get('/:id/edit', (req, res) => {
 	// we need to get the id
-	const exampleId = req.params.id
-	Example.findById(exampleId)
-		.then(example => {
-			res.render('examples/edit', { example })
+	const restaurantId = req.params.id
+	Restaurant.findById(restaurantId)
+		.then(restaurants => {
+			res.render('examples/edit', { restaurants })
 		})
 		.catch((error) => {
 			res.redirect(`/error?error=${error}`)
@@ -95,12 +95,12 @@ router.get('/:id/edit', (req, res) => {
 
 // update route
 router.put('/:id', (req, res) => {
-	const exampleId = req.params.id
+	const restaurantId = req.params.id
 	req.body.ready = req.body.ready === 'on' ? true : false
 
-	Example.findByIdAndUpdate(exampleId, req.body, { new: true })
-		.then(example => {
-			res.redirect(`/examples/${example.id}`)
+	Restaurant.findByIdAndUpdate(restaurantId, req.body, { new: true })
+		.then(restaurants => {
+			res.redirect(`/restaurant/${restaurants.id}`)
 		})
 		.catch((error) => {
 			res.redirect(`/error?error=${error}`)
@@ -109,11 +109,11 @@ router.put('/:id', (req, res) => {
 
 // show route
 router.get('/:id', (req, res) => {
-	const exampleId = req.params.id
-	Example.findById(exampleId)
-		.then(example => {
+	const restaurantId = req.params.id
+	Restaurant.findById(restaurantId)
+		.then(restaurants => {
             const {username, loggedIn, userId} = req.session
-			res.render('examples/show', { example, username, loggedIn, userId })
+			res.render('restaurant/show', { restaurants, username, loggedIn, userId })
 		})
 		.catch((error) => {
 			res.redirect(`/error?error=${error}`)
@@ -122,10 +122,10 @@ router.get('/:id', (req, res) => {
 
 // delete route
 router.delete('/:id', (req, res) => {
-	const exampleId = req.params.id
-	Example.findByIdAndRemove(exampleId)
-		.then(example => {
-			res.redirect('/examples')
+	const restaurantId = req.params.id
+	Restaurant.findByIdAndRemove(restaurantId)
+		.then(restaurants => {
+			res.redirect('/restaurant')
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
