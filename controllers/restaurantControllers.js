@@ -40,23 +40,29 @@ router.get('/', (req, res) => {
 		})
 })
 
+
+
+
+
 // index that shows only the user's examples
 router.get('/mine', (req, res) => {
     // destructure user info from req.session
     const { username, userId, loggedIn } = req.session
-	Example.find({ owner: userId })
-		.then(examples => {
-			res.render('examples/index', { examples, username, loggedIn })
+	Restaurant.find({ owner: userId })
+		.then(restaurants => {
+			res.render('restaurant/index', { restaurants, username, loggedIn })
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
 		})
 })
 
+
+
 // new route -> GET route that renders our page with the form
 router.get('/new', (req, res) => {
 	const { username, userId, loggedIn } = req.session
-	res.render('examples/new', { username, loggedIn })
+	res.render('restaurant/new', { username, loggedIn })
 })
 
 // create -> POST route that actually calls the db and makes a new document
@@ -64,10 +70,10 @@ router.post('/', (req, res) => {
 	req.body.ready = req.body.ready === 'on' ? true : false
 
 	req.body.owner = req.session.userId
-	Example.create(req.body)
-		.then(example => {
-			console.log('this was returned from create', example)
-			res.redirect('/examples')
+	Restaurant.create(req.body)
+		.then(restaurants => {
+			console.log('this was returned from create', restaurants)
+			res.redirect('/restaurant')
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
