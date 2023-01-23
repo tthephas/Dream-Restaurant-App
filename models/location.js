@@ -2,14 +2,13 @@
 const { Schema, model } = require('../utils/connection.js')
 
 // create the schema
-const UserSchema = new Schema(
+const locationSchema = new Schema(
 	{
-		username: { 
+		city: { 
 			type: String, 
-			required: true, 
-			unique: true 
+			required: true
 		},
-		password: { 
+		state: { 
 			type: String, 
 			required: true 
 		}
@@ -18,7 +17,7 @@ const UserSchema = new Schema(
 )
 
 // creat the model
-const User = model('User', UserSchema)
+const Location = model('Location', locationSchema)
 
 // export the model
-module.exports = User
+module.exports = Location

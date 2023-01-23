@@ -1,5 +1,5 @@
 // import dependencies
-const mongoose = require('./connection')
+const mongoose = require('../utils/connection')
 
 // import user model for populate
 const User = require('./user')
@@ -23,7 +23,22 @@ const exampleSchema = new Schema(
 
 const Example = model('Example', exampleSchema)
 
+const restaurantSchema =  new Schema({
+	name: { type: String, required: true },
+	location: { type: Schema.Types.ObjectID, ref: 'Location' },
+	cuisine: { type: String, required: true},
+	menuItems: [menuItemsSchema],
+	owner: { type: Schema.Types.ObjectID, ref: 'User' }
+	}, {
+		timestamps: true
+	}
+)
+
+// make the restaurant model
+const Restaurant = model('Restaurant', restaurantSchema)
+
+
 /////////////////////////////////
 // Export our Model
 /////////////////////////////////
-module.exports = Example
+module.exports = Restaurant

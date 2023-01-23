@@ -7,6 +7,7 @@ const morgan = require('morgan')
 const methodOverride = require('method-override')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')
+const mongoose = require('mongoose')
 
 /////////////////////////////////
 // Middleware function

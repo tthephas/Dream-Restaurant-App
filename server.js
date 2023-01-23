@@ -9,6 +9,7 @@ const UserRouter = require('./controllers/user')
 const User = require("./models/user")
 // SEE MORE DEPENDENCIES IN ./utils/middleware.js
 // user and resource routes linked in ./utils/middleware.js
+const path = require('path')
 
 //////////////////////////////
 // Middleware + App Object  //
@@ -46,5 +47,5 @@ app.all('*', (req, res) => {
 //      App Listener        //
 //////////////////////////////
 app.listen(process.env.PORT, () => {
-    console.log(`listening on port ${process.env.PORT}`)
+    console.log(`LISTENING on port ${process.env.PORT}`)
 })
