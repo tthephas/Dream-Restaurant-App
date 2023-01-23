@@ -30,6 +30,35 @@ app.get('/', (req, res) => {
 	res.render('index.liquid', { loggedIn, username, userId })
 })
 
+/// seed test //
+// app.get('/restaurant/seeds', (req,res) => {
+// 	const startRestaurant = [
+//         {
+//             name: 'First Amazing Restaurant',
+//             cuisine: 'Pizza',
+//             menuItems: [ {course: 'Appetizer', name: 'Shrimp Cocktail'}, {course: 'Entree', name: 'Deep Dish Pepperoni'}, {course: 'Dessert', name: 'Key Lime Pie'}],
+//             //owner: { type: Schema.Types.ObjectID, ref: 'User' },
+//             //location: { type: Schema.Types.ObjectID, ref: 'Location' }
+//         },
+//         {
+//             name: 'TJTs Sushi Stop',
+//             cuisine: 'Sushi',
+//             menuItems: [ {course: 'Appetizer', name: 'Fried Calamari'}, {course: 'Entree', name: 'Dragon Roll'}, {course: 'Dessert', name: 'Chocolate Cake'}],
+//             //owner: { type: Schema.Types.ObjectID, ref: 'User' },
+//             //location: { type: Schema.Types.ObjectID, ref: 'Location' }
+//         },
+//         {
+//             name: 'LEWs Chinese Buffet',
+//             cuisine: 'Chinese',
+//             menuItems: [ {course: 'Appetizer', name: 'Edamame'}, {course: 'Entree', name: 'Shrimp Fried Rice'}, {course: 'Dessert', name: 'Vanilla Ice Cream'}],
+//             //owner: { type: Schema.Types.ObjectID, ref: 'User' },
+//             //location: { type: Schema.Types.ObjectID, ref: 'Location' }
+//         }        
+//     ]
+// 	console.log('starter restaurants', startRestaurant)
+// 	res.json({startRestaurant: startRestaurant})
+// })
+
 app.get('/error', (req, res) => {
 	const error = req.query.error || 'This Page Does Not Exist'
     const { username, loggedIn, userId } = req.session

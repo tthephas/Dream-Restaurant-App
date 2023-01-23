@@ -3,6 +3,8 @@ const mongoose = require('./connection')
 
 // import user model for populate
 const User = require('./user')
+const Location = require('./location')
+const menuItemsSchema = require('./menuItems')
 
 // destructure the schema and model constructors from mongoose
 const { Schema, model } = mongoose
@@ -25,10 +27,10 @@ const { Schema, model } = mongoose
 
 const restaurantSchema =  new Schema({
 	name: { type: String, required: true },
-	location: { type: Schema.Types.ObjectID, ref: 'Location' },
 	cuisine: { type: String, required: true},
 	menuItems: [menuItemsSchema],
-	owner: { type: Schema.Types.ObjectID, ref: 'User' }
+	owner: { type: Schema.Types.ObjectID, ref: 'User' },
+	location: { type: Schema.Types.ObjectID, ref: 'Location' }
 	}, {
 		timestamps: true
 	}

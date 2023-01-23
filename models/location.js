@@ -1,5 +1,12 @@
-// import what I need
-const { Schema, model } = require('./connection.js')
+// import dependencies
+const mongoose = require('./connection')
+
+// import user model for populate
+const User = require('./user')
+
+
+// destructure the schema and model constructors from mongoose
+const { Schema, model } = mongoose
 
 // create the schema
 const locationSchema = new Schema(
