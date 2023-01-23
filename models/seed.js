@@ -43,7 +43,7 @@ db.on('open', () => {
             Restaurant.create(startRestaurant)
                 .then(data => {
                     console.log('Here are some created restaurants', data)
-                    db.close()
+                    //db.close()
                 })
                 .catch(err => {console.log('The following error occured: ', err)
                 db.close()
@@ -59,4 +59,4 @@ db.on('open', () => {
 /////////////////////////////////
 // Export our Model
 /////////////////////////////////
-module.exports = Restaurant
+// module.exports = Restaurant

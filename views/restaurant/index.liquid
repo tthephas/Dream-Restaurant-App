@@ -1,0 +1,27 @@
+{% layout 'layout.liquid' %}
+{% block content %}
+  <div>
+    <h2 class="display-6">All Restaurants</h2>
+    <div class="row">
+      {% for restaurant in restaurants %}
+        <div class="card" style="width: 18rem;">
+          <h5 class="card-header">{{ restaurant.name }}</h5>
+          <div class="card-body">
+            <h5 class="card-title">
+              Cuisine: {{ restaurant.cuisine }}
+            </h5>
+            <p class="card-text">
+              Menu: {{ restaurant.menuItems }}
+            </p>
+            <p class="card-text">
+              Owner: {{ restaurant.owner }}
+            </p>
+            <a href="/restaurant/{{ restaurant.id }}" class="btn btn-info">
+              View {{ restaurant.name }}
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
