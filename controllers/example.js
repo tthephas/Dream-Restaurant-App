@@ -1,6 +1,11 @@
 // Import Dependencies
 const express = require('express')
-const Example = require('../models/restaurant')
+//const Example = require('../models/restaurant')
+const User = require("../models/user")
+const Location = require('../models/location')
+const Restaurant = require('../models/restaurant')
+const MenuItems = require('../models/menuItems')
+const Seed = require('../models/seed')
 
 // Create router
 const router = express.Router()
@@ -23,12 +28,12 @@ router.use((req, res, next) => {
 
 // index ALL
 router.get('/', (req, res) => {
-	Example.find({})
-		.then(examples => {
+	Restaurant.find({})
+		.then(restaurants => {
 			const username = req.session.username
 			const loggedIn = req.session.loggedIn
 			
-			res.render('examples/index', { examples, username, loggedIn })
+			res.render('restaurant/index', { restaurants, username, loggedIn })
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)

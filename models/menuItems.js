@@ -23,7 +23,7 @@ const menuItemsSchema = new Schema(
     }
 )
 
-//const MenuItems = model('MenuItems', menuItemsSchema)
+const MenuItems = model('MenuItems', menuItemsSchema)
 
 /////////////////////////////////
 // Export our Model
