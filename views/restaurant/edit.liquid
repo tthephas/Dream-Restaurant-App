@@ -1,10 +1,10 @@
 {% layout 'layout.liquid' %}
 {% block content %}
   <div class="container-sm">
-    <form action="/restaurant?_method=PUT" method="POST">
+    <form action="/restaurant/{{restaurant.id}}?_method=PUT" method="POST">
       <fieldset>
-        <legend>Create New Restaurant</legend>
-        <label class="form-label">Name:
+        <legend>Edit   {{ restaurant.name }} </legend>
+        <label class="form-label">Name: 
         </label>
         <input
           type="text"
@@ -19,25 +19,38 @@
           placeholder="{{ restaurant.cuisine }}"
           value="{{ restaurant.cuisine }}"
           class="form-control">
-        <label class="form-label">Menu Items:</label>
+          </br>
+        <label class="form-label">Menu Items</label>
+        </br>
+        <label class="form-label">Appetizer:</label>
         <input
           type="text"
-          name="menu"
-          value="{{ restaurant.menuItems }}"
+          name="appetizer"
+          value="{{ restaurant.menuItems[0].appetizer }}"
           class="form-control">
+        <label class="form-label">Entree:</label>
+        <input
+          type="text"
+          name="entree"
+          value="{{ restaurant.menuItems[0].entree }}"
+          class="form-control">
+        <label class="form-label">Dessert:</label>
+        <input
+          type="text"
+          name="dessert"
+          value="{{ restaurant.menuItems[0].dessert }}"
+          class="form-control">
+          </br>
         <label class="form-label">Location:</label>
         <input
           type="text"
           name="location"
-          class="form-check-input"
-          {% if restaurant.location %}
-          checked
-          {% endif %}>
+          value="{{ restaurant.location }}"
+          class="form-control">
+
       </fieldset>
-      <input
-        type="submit"
-        value="Edit Restaurant"
-        class="btn btn-success">
+        <input type="submit" href="/restaurant/{{ restaurant.id }}" class="btn btn-success mt-4">         
+        <a href="/restaurant/{{ restaurant.id }}" class="btn btn-warning mt-4">Back</a>
     </form>
   </div>
 {% endblock %}

@@ -90,8 +90,8 @@ router.get('/:id/edit', (req, res) => {
 	// we need to get the id
 	const restaurantId = req.params.id
 	Restaurant.findById(restaurantId)
-		.then(restaurants => {
-			res.render('restaurant/edit', { restaurants })
+		.then(restaurant => {
+			res.render('restaurant/edit', { restaurant, ...req.session })
 		})
 		.catch((error) => {
 			res.redirect(`/error?error=${error}`)
@@ -101,11 +101,14 @@ router.get('/:id/edit', (req, res) => {
 // update route
 router.put('/:id', (req, res) => {
 	const restaurantId = req.params.id
-	req.body.ready = req.body.ready === 'on' ? true : false
-
-	Restaurant.findByIdAndUpdate(restaurantId, req.body, { new: true })
-		.then(restaurants => {
-			res.redirect(`/restaurant/${restaurants.id}`)
+	const updatedRest = req.body
+	console.log('updating this rest', restaurantId)
+	Restaurant.findByIdAndUpdate(restaurantId, req.body)
+		.then(restaurant => {
+			return restaurant.updateOne(req.body)
+		})
+		.then(restaurant => {
+			res.redirect(`/restaurant/${restaurant.id}`)
 		})
 		.catch((error) => {
 			res.redirect(`/error?error=${error}`)
