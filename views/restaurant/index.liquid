@@ -8,16 +8,16 @@
           <h5 class="card-header">{{ restaurant.name }}</h5>
           <div class="card-body">
             <h5 class="card-title">
-              Cuisine: {{ restaurant.cuisine }}
+              Cuisine: {{ restaurant.cuisine }}</br></br>
             </h5>
             <p class="card-text">
-              Menu: </br>
-              {{ restaurant.menuItems[0].course }} : {{ restaurant.menuItems[0].name }} </br>
-              {{ restaurant.menuItems[1].course }} : {{ restaurant.menuItems[1].name }} </br>
+              Menu: </br></br>
+              {{ restaurant.menuItems[0].course }} : {{ restaurant.menuItems[0].name }} </br></br>
+              {{ restaurant.menuItems[1].course }} : {{ restaurant.menuItems[1].name }} </br></br>
               {{ restaurant.menuItems[2].course }} : {{ restaurant.menuItems[2].name }} 
             </p>
             <p class="card-text">
-              Owner: {{ restaurant.owner }}
+                </br>Owner: {{ restaurant.owner }}
             </p>
             <a href="/restaurant/{{ restaurant.id }}" class="btn btn-info">
               View {{ restaurant.name }}

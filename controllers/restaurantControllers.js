@@ -42,8 +42,6 @@ router.get('/', (req, res) => {
 
 
 
-
-
 // index that shows only the user's examples
 router.get('/mine', (req, res) => {
     // destructure user info from req.session
