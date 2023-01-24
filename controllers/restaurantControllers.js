@@ -103,12 +103,12 @@ router.put('/:id', (req, res) => {
 	const restaurantId = req.params.id
 	const updatedRest = req.body
 	console.log('updating this rest', restaurantId)
-	Restaurant.findByIdAndUpdate(restaurantId, req.body)
+	Restaurant.findById(restaurantId)
 		.then(restaurant => {
-			return restaurant.updateOne(req.body)
+			return restaurant.updateOne(updatedRest)
 		})
-		.then(restaurant => {
-			res.redirect(`/restaurant/${restaurant.id}`)
+		.then(() => {
+			res.redirect(`/restaurant/mine`)
 		})
 		.catch((error) => {
 			res.redirect(`/error?error=${error}`)
