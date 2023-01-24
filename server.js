@@ -12,7 +12,7 @@ const User = require("./models/user")
 const Location = require('./models/location')
 const Restaurant = require('./models/restaurant')
 const MenuItems = require('./models/menuItems')
-const Seed = require('./models/seed')
+//const Seed = require('./models/seed')
 
 
 // SEE MORE DEPENDENCIES IN ./utils/middleware.js

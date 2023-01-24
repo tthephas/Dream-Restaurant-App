@@ -5,7 +5,7 @@ const User = require("../models/user")
 const Location = require('../models/location')
 const Restaurant = require('../models/restaurant')
 const MenuItems = require('../models/menuItems')
-const Seed = require('../models/seed')
+//const Seed = require('../models/seed')
 
 // Create router
 const router = express.Router()
@@ -32,8 +32,8 @@ router.get('/', (req, res) => {
 		.then(restaurants => {
 			const username = req.session.username
 			const loggedIn = req.session.loggedIn
-			res.json({ restaurants: restaurants})
-			//res.render('restaurant/index', { restaurants, username, loggedIn })
+			//res.json({ restaurants: restaurants})
+			res.render('restaurant/index', { restaurants, username, loggedIn })
 			
 		})
 		.catch(error => {
@@ -73,7 +73,7 @@ router.post('/', (req, res) => {
 	Restaurant.create(newRestaurant)
 		.then(restaurants => {
 			console.log('this was returned from create', restaurants)
-			restaurant.MenuItems.push(newRestaurant)
+			restaurant.menuItems.push(newRestaurant)
 			return restaurant.save()	
 		})
 		.then(restaurant => {
@@ -115,9 +115,9 @@ router.put('/:id', (req, res) => {
 router.get('/:id', (req, res) => {
 	const restaurantId = req.params.id
 	Restaurant.findById(restaurantId)
-		.then(restaurants => {
+		.then(restaurant => {
             const {username, loggedIn, userId} = req.session
-			res.render('restaurant/show.liquid', { restaurants, username, loggedIn, userId })
+			res.render('restaurant/show', { restaurant, username, loggedIn, userId })
 		})
 		.catch((error) => {
 			res.redirect(`/error?error=${error}`)

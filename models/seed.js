@@ -1,5 +1,5 @@
 // import dependencies
-const mongoose = require('./connection')
+const mongoose = require('../utils/connection')
 const Restaurant = require('./restaurant')
 
 // import user model for populate
@@ -18,23 +18,23 @@ db.on('open', () => {
         {
             name: 'Pizza Palace',
             cuisine: 'Pizza',
-            menuItems: [ {course: 'Appetizer', name: 'Shrimp Cocktail'}, {course: 'Entree', name: 'Deep Dish Pepperoni'}, {course: 'Dessert', name: 'Key Lime Pie'}],
-            owner: { type: Schema.Types.ObjectID, ref: 'User' },
+            menuItems: {appetizer: 'Shrimp Cocktail', entree: 'Deep Dish Pepperoni', dessert: 'Key Lime Pie'}
             //location: { type: Schema.Types.ObjectID, ref: 'Location' }
+            //owner: { type: Schema.Types.ObjectID, ref: 'User' },
         },
         {
             name: 'TJTs Sushi Stop',
             cuisine: 'Sushi',
-            menuItems: [ {course: 'Appetizer', name: 'Fried Calamari'}, {course: 'Entree', name: 'Dragon Roll'}, {course: 'Dessert', name: 'Chocolate Cake'}],
-            owner: { type: Schema.Types.ObjectID, ref: 'User' },
+            menuItems: {appetizer: 'Fried Calamari', entree: 'Dragon Roll', dessert: 'Chocolate Cake'}
             //location: { type: Schema.Types.ObjectID, ref: 'Location' }
+            //owner: { type: Schema.Types.ObjectID, ref: 'User' },
         },
         {
             name: 'LEWs Chinese Buffet',
             cuisine: 'Chinese',
-            menuItems: [ {course: 'Appetizer', name: 'Edamame'}, {course: 'Entree', name: 'Shrimp Fried Rice'}, {course: 'Dessert', name: 'Vanilla Ice Cream'}],
-            owner: { type: Schema.Types.ObjectID, ref: 'User' },
+            menuItems: {appetizer: 'Edamame', entree: 'Shrimp Fried Rice', dessert: 'Vanilla Ice Cream'}
             //location: { type: Schema.Types.ObjectID, ref: 'Location' }
+            //owner: { type: Schema.Types.ObjectID, ref: 'User' },
         }        
     ]
 
@@ -43,7 +43,7 @@ db.on('open', () => {
             Restaurant.create(startRestaurant)
                 .then(data => {
                     console.log('Here are some created restaurants', data)
-                    //db.close()
+                    db.close()
                 })
                 .catch(err => {console.log('The following error occured: ', err)
                 db.close()

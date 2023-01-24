@@ -1,5 +1,5 @@
 // import dependencies
-const mongoose = require('./connection')
+const mongoose = require('../utils/connection')
 
 // import user model for populate
 const User = require('./user')
@@ -10,13 +10,15 @@ const { Schema, model } = mongoose
 
 const menuItemsSchema = new Schema(
     {
-        // later, enumerate this? enum[appetizer, entree, dessert]
-        course: {
+        appetizer: {   
             type: String,
-            enum: ['Appetizer', 'Entree', 'Dessert'],
             required: true
-        },
-        name: {   
+        } ,
+        entree: {   
+            type: String,
+            required: true
+        } ,
+        dessert: {   
             type: String,
             required: true
         } 

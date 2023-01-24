@@ -1,5 +1,5 @@
 // import dependencies
-const mongoose = require('./connection')
+const mongoose = require('../utils/connection')
 
 // import user model for populate
 const User = require('./user')
@@ -34,12 +34,16 @@ const restaurantSchema =  new Schema({
 		required: true},
 	menuItems: 
 		[menuItemsSchema],
+	locationCity: { 
+		type: String, 
+		required: true},
+	locationState: { 
+		type: String, 
+		required: true},
 	owner: { 
 		type: Schema.Types.ObjectID, 
-		ref: 'User' },
-	location: { 
-		type: Schema.Types.ObjectID, 
-		ref: 'Location' }
+		ref: 'User' }
+
 	}, {
 		timestamps: true
 	}
