@@ -11,7 +11,10 @@
               Cuisine: {{ restaurant.cuisine }}
             </h5>
             <p class="card-text">
-              Menu: {{ restaurant.menuItems.course }}
+              Menu: </br>
+              {{ restaurant.menuItems[0].course }} : {{ restaurant.menuItems[0].name }} </br>
+              {{ restaurant.menuItems[1].course }} : {{ restaurant.menuItems[1].name }} </br>
+              {{ restaurant.menuItems[2].course }} : {{ restaurant.menuItems[2].name }} 
             </p>
             <p class="card-text">
               Owner: {{ restaurant.owner }}
