@@ -29,6 +29,7 @@ router.use((req, res, next) => {
 // index ALL
 router.get('/', (req, res) => {
 	Restaurant.find({})
+		.populate('owner', 'username')
 		.then(restaurants => {
 			const username = req.session.username
 			const loggedIn = req.session.loggedIn

@@ -9,21 +9,6 @@ const menuItemsSchema = require('./menuItems')
 // destructure the schema and model constructors from mongoose
 const { Schema, model } = mongoose
 
-// const exampleSchema = new Schema(
-// 	{
-// 		title: { type: String, required: true },
-// 		body: { type: String, required: true },
-//         amount: { type: Number, required: true },
-// 		ready: { type: Boolean, required: true },
-// 		owner: {
-// 			type: Schema.Types.ObjectID,
-// 			ref: 'User',
-// 		}
-// 	},
-// 	{ timestamps: true }
-// )
-
-// const Example = model('Example', exampleSchema)
 
 const restaurantSchema =  new Schema({
 	name: { 
@@ -38,7 +23,7 @@ const restaurantSchema =  new Schema({
 		type: String, 
 		required: true},
 	owner: { 
-		type: Schema.Types.ObjectID, 
+		type: Schema.Types.ObjectId, 
 		ref: 'User'
 		//default: 'Guy Fieri' 
 	}
