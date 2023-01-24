@@ -11,13 +11,16 @@
               Cuisine: {{ restaurant.cuisine }}</br></br>
             </h5>
             <p class="card-text">
-              Menu: </br></br>
+              Menu </br></br>
               Appetizer : {{ restaurant.menuItems[0].appetizer }} </br></br>
               Entree : {{ restaurant.menuItems[0].entree }} </br></br>
               Dessert : {{ restaurant.menuItems[0].dessert }} 
             </p>
             <p class="card-text">
-                </br>Owner: {{ restaurant.owner }}
+              </br>Location: {{ restaurant.location }}
+          </p>
+            <p class="card-text">
+                </br>Owner: {{ username }}
             </p>
             <a href="/restaurant/{{ restaurant.id }}" class="btn btn-info">
               View {{ restaurant.name }}

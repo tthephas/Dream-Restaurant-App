@@ -18,22 +18,23 @@ db.on('open', () => {
         {
             name: 'Pizza Palace',
             cuisine: 'Pizza',
-            menuItems: {appetizer: 'Shrimp Cocktail', entree: 'Deep Dish Pepperoni', dessert: 'Key Lime Pie'}
-            //location: { type: Schema.Types.ObjectID, ref: 'Location' }
+            menuItems: {appetizer: 'Shrimp Cocktail', entree: 'Deep Dish Pepperoni', dessert: 'Key Lime Pie'},
+            location: 'Rome, Italy'
+            //owner: 'Guy Fieri'
             //owner: { type: Schema.Types.ObjectID, ref: 'User' },
         },
         {
             name: 'TJTs Sushi Stop',
             cuisine: 'Sushi',
-            menuItems: {appetizer: 'Fried Calamari', entree: 'Dragon Roll', dessert: 'Chocolate Cake'}
-            //location: { type: Schema.Types.ObjectID, ref: 'Location' }
+            menuItems: {appetizer: 'Fried Calamari', entree: 'Dragon Roll', dessert: 'Chocolate Cake'},
+            location: 'Chicago, IL'
             //owner: { type: Schema.Types.ObjectID, ref: 'User' },
         },
         {
             name: 'LEWs Chinese Buffet',
             cuisine: 'Chinese',
-            menuItems: {appetizer: 'Edamame', entree: 'Shrimp Fried Rice', dessert: 'Vanilla Ice Cream'}
-            //location: { type: Schema.Types.ObjectID, ref: 'Location' }
+            menuItems: {appetizer: 'Edamame', entree: 'Shrimp Fried Rice', dessert: 'Vanilla Ice Cream'},
+            location: 'San Diego, CA'
             //owner: { type: Schema.Types.ObjectID, ref: 'User' },
         }        
     ]

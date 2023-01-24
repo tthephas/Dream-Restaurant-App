@@ -6,9 +6,12 @@
             Restaurant Name: {{ restaurant.name }} 
 
         </h2>
-        <h3>Cuisine: {{ restaurant.cuisine }}</h3>
-        <h6>Menu: {{ restaurant.menuItems }}</h6>
-        <h6>Location: {{ restaurant.location }}</h6>
+        <h3 class="mt-5">Cuisine: {{ restaurant.cuisine }}</h3>
+        <h4 class="mt-5">Menu</h4>
+        <h4 class="mt-5">Appetizer: {{ restaurant.menuItems[0].appetizer }}</h4>
+        <h4 class="mt-5">Entree: {{ restaurant.menuItems[0].entree }}</h4>
+        <h4 class="mt-5">Dessert: {{ restaurant.menuItems[0].dessert }}</h4>
+        <h6 class="mt-5">Location: {{ restaurant.location }}</h6>
         {% if restaurant.owner == userId %}
         <div class="btn-group">
 

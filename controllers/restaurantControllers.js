@@ -67,16 +67,17 @@ router.get('/new', (req, res) => {
 // create -> POST route that actually calls the db and makes a new document
 router.post('/', (req, res) => {
 	req.body.owner = req.session.userId
-	req.body.ready = req.body.ready === 'on' ? true : false
+	//req.body.ready = req.body.ready === 'on' ? true : false
 	const newRestaurant = req.body
 	
 	Restaurant.create(newRestaurant)
-		.then(restaurants => {
-			console.log('this was returned from create', restaurants)
+		.then(restaurant => {
 			restaurant.menuItems.push(newRestaurant)
 			return restaurant.save()	
 		})
 		.then(restaurant => {
+			console.log('this was returned from create', restaurant)
+			
 			res.redirect(`/restaurant/${restaurant.id}`)
 		})
 		.catch(error => {
