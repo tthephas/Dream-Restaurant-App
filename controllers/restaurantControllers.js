@@ -91,7 +91,7 @@ router.get('/:id/edit', (req, res) => {
 	const restaurantId = req.params.id
 	Restaurant.findById(restaurantId)
 		.then(restaurants => {
-			res.render('examples/edit', { restaurants })
+			res.render('restaurant/edit', { restaurants })
 		})
 		.catch((error) => {
 			res.redirect(`/error?error=${error}`)
