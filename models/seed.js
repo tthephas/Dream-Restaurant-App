@@ -19,21 +19,21 @@ db.on('open', () => {
             name: 'Pizza Palace',
             cuisine: 'Pizza',
             menuItems: [ {course: 'Appetizer', name: 'Shrimp Cocktail'}, {course: 'Entree', name: 'Deep Dish Pepperoni'}, {course: 'Dessert', name: 'Key Lime Pie'}],
-            //owner: { type: Schema.Types.ObjectID, ref: 'User' },
+            owner: { type: Schema.Types.ObjectID, ref: 'User' },
             //location: { type: Schema.Types.ObjectID, ref: 'Location' }
         },
         {
             name: 'TJTs Sushi Stop',
             cuisine: 'Sushi',
             menuItems: [ {course: 'Appetizer', name: 'Fried Calamari'}, {course: 'Entree', name: 'Dragon Roll'}, {course: 'Dessert', name: 'Chocolate Cake'}],
-            //owner: { type: Schema.Types.ObjectID, ref: 'User' },
+            owner: { type: Schema.Types.ObjectID, ref: 'User' },
             //location: { type: Schema.Types.ObjectID, ref: 'Location' }
         },
         {
             name: 'LEWs Chinese Buffet',
             cuisine: 'Chinese',
             menuItems: [ {course: 'Appetizer', name: 'Edamame'}, {course: 'Entree', name: 'Shrimp Fried Rice'}, {course: 'Dessert', name: 'Vanilla Ice Cream'}],
-            //owner: { type: Schema.Types.ObjectID, ref: 'User' },
+            owner: { type: Schema.Types.ObjectID, ref: 'User' },
             //location: { type: Schema.Types.ObjectID, ref: 'Location' }
         }        
     ]

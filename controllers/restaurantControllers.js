@@ -32,8 +32,9 @@ router.get('/', (req, res) => {
 		.then(restaurants => {
 			const username = req.session.username
 			const loggedIn = req.session.loggedIn
+			res.json({ restaurants: restaurants})
+			//res.render('restaurant/index', { restaurants, username, loggedIn })
 			
-			res.render('restaurant/index', { restaurants, username, loggedIn })
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)

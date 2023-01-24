@@ -1,5 +1,5 @@
 // import what I need
-const { Schema, model } = require('./connection')
+const { Schema, model } = require('./connection.js')
 
 // create the schema
 const UserSchema = new Schema(
