@@ -26,11 +26,20 @@ const { Schema, model } = mongoose
 // const Example = model('Example', exampleSchema)
 
 const restaurantSchema =  new Schema({
-	name: { type: String, required: true },
-	cuisine: { type: String, required: true},
-	menuItems: [menuItemsSchema],
-	owner: { type: Schema.Types.ObjectID, ref: 'User' },
-	location: { type: Schema.Types.ObjectID, ref: 'Location' }
+	name: { 
+		type: String, 
+		required: true },
+	cuisine: { 
+		type: String, 
+		required: true},
+	menuItems: 
+		[menuItemsSchema],
+	owner: { 
+		type: Schema.Types.ObjectID, 
+		ref: 'User' },
+	location: { 
+		type: Schema.Types.ObjectID, 
+		ref: 'Location' }
 	}, {
 		timestamps: true
 	}
