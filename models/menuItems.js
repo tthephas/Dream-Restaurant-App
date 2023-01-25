@@ -5,27 +5,24 @@ const mongoose = require('../utils/connection')
 const User = require('./user')
 
 // destructure the schema and model constructors from mongoose
-const { Schema, model } = mongoose
+const { Schema } = mongoose
 
 
-const menuItemsSchema = new Schema(
-    {
-        appetizer: {   
-            type: String,
-            required: true
-        } ,
-        entree: {   
-            type: String,
-            required: true
-        } ,
-        dessert: {   
-            type: String,
-            required: true
-        } 
-    }
-)
+const menuItemsSchema = {
+	type: {
+		type: String,
+		enum: ['entree', 'appetizer', 'dessert']
+	},
+	name: { 
+		type: String,
+		required: true
+	},
+	price: {
+		type: Number,
+		required: true
+	}
+}
 
-const MenuItems = model('MenuItems', menuItemsSchema)
 
 /////////////////////////////////
 // Export our Model

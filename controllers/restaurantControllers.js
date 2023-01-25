@@ -50,7 +50,7 @@ router.get('/mine', (req, res) => {
     const { username, userId, loggedIn } = req.session
 	Restaurant.find({ owner: userId })
 		.then(restaurants => {
-			res.render('restaurant/index', { restaurants, username, loggedIn })
+			res.render('restaurant/show', { restaurants, username, loggedIn })
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
@@ -79,7 +79,7 @@ router.post('/', (req, res) => {
 		.then(restaurant => {
 			console.log('this was returned from create', restaurant)
 			
-			res.redirect(`/restaurant/${restaurant.id}`)
+			res.redirect(`/restaurant/`)
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
@@ -102,8 +102,11 @@ router.get('/:id/edit', (req, res) => {
 // update route
 router.put('/:id', (req, res) => {
 	const restaurantId = req.params.id
-	const updatedRest = req.body
+	const menuItemsId = req.params.name
+	/// tests to get to the menu items id
+	const updatedRest = req.body.cuisine
 	console.log('updating this rest', restaurantId)
+	console.log('updating this menu', updatedRest)
 	Restaurant.findByIdAndUpdate(restaurantId, updatedRest, { new: true })
 
 		.then((restaurant) => {
@@ -116,7 +119,7 @@ router.put('/:id', (req, res) => {
 })
 
 // show route
-router.get('/:id', (req, res) => {
+router.get('/mine', (req, res) => {
 	const restaurantId = req.params.id
 	Restaurant.findById(restaurantId)
 		.then(restaurant => {

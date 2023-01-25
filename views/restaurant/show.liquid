@@ -1,26 +1,67 @@
+{% comment %}
 {% layout 'layout.liquid' %}
 {% block content %}
-<div class="container-md">
+  <div class="container-md">
+    <h2 class="display-6">MINE Restaurants</h2>
     <article>
-        <h2>
-            Restaurant Name: {{ restaurant.name }} 
+      <h2>
+        Restaurant Name: {{ restaurant.name }}
 
-        </h2>
-        <h3 class="mt-5">Cuisine: {{ restaurant.cuisine }}</h3>
-        <h4 class="mt-5">Menu</h4>
-        <h4 class="mt-5">Appetizer: {{ restaurant.menuItems[0].appetizer }}</h4>
-        <h4 class="mt-5">Entree: {{ restaurant.menuItems[0].entree }}</h4>
-        <h4 class="mt-5">Dessert: {{ restaurant.menuItems[0].dessert }}</h4>
-        <h6 class="mt-5">Location: {{ restaurant.location }}</h6>
-        {% if restaurant.owner == userId %}
+      </h2>
+      <h3 class="mt-5">Cuisine: {{ restaurant.cuisine }}</h3>
+      <h4 class="mt-5">Menu</h4>
+      <h4 class="mt-5">Appetizer: {{ restaurant.menuItems[0].appetizer }}</h4>
+      <h4 class="mt-5">Entree: {{ restaurant.menuItems[0].entree }}</h4>
+      <h4 class="mt-5">Dessert: {{ restaurant.menuItems[0].dessert }}</h4>
+      <h6 class="mt-5">Location: {{ restaurant.location }}</h6>
+      {% if restaurant.owner == userId %}
         <div class="btn-group">
 
-            <a href="/restaurant/{{ restaurant.id }}/edit" class="btn btn-primary">Edit</a>
-            <form action="/restaurant/{{ restaurant.id }}?_method=DELETE" method="POST">
-                <input type="submit" value="Delete" class="btn btn-danger">
-            </form>
+          <a href="/restaurant/{{ restaurant.id }}/edit" class="btn btn-primary">Edit</a>
+          <form action="/restaurant/{{ restaurant.id }}?_method=DELETE" method="POST">
+            <input
+              type="submit"
+              value="Delete"
+              class="btn btn-danger">
+          </form>
         </div>
-        {% endif %}
+      {% endif %}
     </article>
-</div>
+  </div>
+{% endblock %}
+{% endcomment %}
+
+
+{% layout 'layout.liquid' %}
+{% block content %}
+  <div>
+    <h2 class="display-6">My Favorite Restaurants</h2>
+    <div class="row">
+      {% for restaurant in restaurants %}
+        <div class="card" style="width: 18rem;">
+          <h5 class="card-header">{{ restaurant.name }}</h5>
+          <div class="card-body">
+            <h5 class="card-title">
+              Cuisine: {{ restaurant.cuisine }}</br></br>
+            </h5>
+            <p class="card-text">
+              Menu </br></br>
+              Appetizer : {{ restaurant.menuItems[0].appetizer }} </br></br>
+              Entree : {{ restaurant.menuItems[0].entree }} </br></br>
+              Dessert : {{ restaurant.menuItems[0].dessert }} 
+            </p>
+            <p class="card-text">
+              </br>Location: {{ restaurant.location }}
+            </p>
+            <p class="card-text">
+                </br>Owner: {{ restaurant.owner.username }}
+            </p>
+            <a href="/restaurant/{{ restaurant.id }}" class="btn btn-info">
+              View {{ restaurant.name }}
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
 {% endblock %}

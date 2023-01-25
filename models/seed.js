@@ -12,13 +12,17 @@ const { Schema, model } = mongoose
 ////   SEED SCRIPT CODE 
 const db = mongoose.connection
 
+
+{type:'appetizer', name:'Shrimp Cocktail', price: 10}
+
+
 // Build a seed route
 db.on('open', () => {
 	const startRestaurant = [
         {
             name: 'Pizza Palace',
             cuisine: 'Pizza',
-            menuItems: {appetizer: 'Shrimp Cocktail', entree: 'Deep Dish Pepperoni', dessert: 'Key Lime Pie'},
+            menuItems: [{type:'appetizer', name:'Shrimp Cocktail', price: 10}, {type:'entree', name:'Shrimp Dejonge', price: 20}],
             location: 'Rome, Italy'
             //owner: 'Guy Fieri'
             //owner: { type: Schema.Types.ObjectID, ref: 'User' },
