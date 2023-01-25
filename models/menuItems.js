@@ -9,11 +9,11 @@ const { Schema } = mongoose
 
 
 const menuItemsSchema = {
-	type: {
+	dishType: {
 		type: String,
 		enum: ['Entree', 'Appetizer', 'Dessert']
 	},
-	name: { 
+	dishName: { 
 		type: String,
 		required: true
 	},
