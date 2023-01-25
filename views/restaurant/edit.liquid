@@ -1,7 +1,7 @@
 {% layout 'layout.liquid' %}
 {% block content %}
   <div class="container-sm">
-    <form action="/restaurant/{{restaurant.id}}?_method=PUT" method="POST">
+    <form action="/restaurant/{{restaurant._id}}?_method=PUT" method="POST">
       <fieldset>
         <legend>Edit   {{ restaurant.name }} </legend>
         <label class="form-label">Name: 
@@ -49,8 +49,8 @@
           class="form-control">
 
       </fieldset>
-        <input type="submit" href="/restaurant/{{ restaurant.id }}" class="btn btn-success mt-4">         
-        <a href="/restaurant/{{ restaurant.id }}" class="btn btn-warning mt-4">Back</a>
+        <input type="submit" class="btn btn-success mt-4">         
+        <a href="/restaurant" class="btn btn-warning mt-4">Back</a>
     </form>
   </div>
 {% endblock %}
