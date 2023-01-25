@@ -26,7 +26,7 @@ router.use((req, res, next) => {
 
 // Routes
 
-// index ALL
+// index ALL shows all restaurants, regardless of owner
 router.get('/', (req, res) => {
 	Restaurant.find({})
 		.populate('owner', 'username')
@@ -42,40 +42,10 @@ router.get('/', (req, res) => {
 		})
 })
 
-
-
-// index that shows only the user's examples
-router.get('/mine', (req, res) => {
-    // destructure user info from req.session
-    const { username, userId, loggedIn } = req.session
-	Restaurant.find({ owner: userId })
-		.then(restaurants => {
-			res.render('restaurant/show', { restaurants, username, loggedIn })
-		})
-		.catch(error => {
-			res.redirect(`/error?error=${error}`)
-		})
-})
-
-// index that shows only the user's examples
-router.get('/:id', (req, res) => {
-    // destructure user info from req.session
-    const { username, userId, loggedIn } = req.session
-	Restaurant.find({ owner: userId })
-		.then(restaurants => {
-			res.render('restaurant/show', { restaurants, username, loggedIn })
-		})
-		.catch(error => {
-			res.redirect(`/error?error=${error}`)
-		})
-})
-
-
-
-
 // new route -> GET route that renders our page with the form
 router.get('/new', (req, res) => {
 	const { username, userId, loggedIn } = req.session
+	
 	res.render('restaurant/new', { username, loggedIn })
 })
 
@@ -86,12 +56,9 @@ router.post('/', (req, res) => {
 	const newRestaurant = req.body
 	console.log('this is req body ', req.body)
 	Restaurant.create(newRestaurant)
-		// .then(restaurant => {
-		// 	restaurant.menuItems.push(newRestaurant)
-		// 	return restaurant.save()	
-		// })
+
 		.then(restaurant => {
-			console.log('this was returned from create', restaurant)
+
 			res.redirect(`/restaurant/${restaurant.id}`)
 		})
 		.catch(error => {
@@ -99,10 +66,26 @@ router.post('/', (req, res) => {
 		})
 })
 
+/// GET only for users restaurants
+// index that shows only the user's examples
+router.get('/mine', (req, res) => {
+    // destructure user info from req.session
+    const { username, userId, loggedIn } = req.session
+	Restaurant.find({ owner: userId })
+		.populate('owner')
+		.then(restaurants => {
+			res.render('restaurant/show', { restaurants, username, loggedIn })
+		})
+		.catch(error => {
+			res.redirect(`/error?error=${error}`)
+		})
+})
+
+
+// GET route
 // edit route -> GET that takes us to the edit form view
-router.get('/:id/edit', (req, res) => {
-	// we need to get the id
-	console.log('finding this rest ')
+router.get('/edit/:id', (req, res) => {
+
 	const restaurantId = req.params.id
 	Restaurant.findById(restaurantId)
 		.then(restaurant => {
@@ -114,19 +97,16 @@ router.get('/:id/edit', (req, res) => {
 })
 
 
-
-// update route
+//PUT ROUTE TO UPDATE A RESTAURANT
+// // update route
 router.put('/:id', (req, res) => {
 	const restaurantId = req.params.id
-	const menuItemsId = req.params.name
+	const allinfo = req.body
 	/// tests to get to the menu items id
-	const updatedRest = req.body.cuisine
 	console.log('updating this rest', restaurantId)
-	console.log('updating this menu', updatedRest)
-	Restaurant.findByIdAndUpdate(restaurantId, updatedRest, { new: true })
-
+	Restaurant.findById(restaurantId)
 		.then((restaurant) => {
-			console.log(restaurant)
+			console.log(allinfo)
 			res.redirect(`/restaurant/mine`)
 		})
 		.catch((error) => {
@@ -134,18 +114,7 @@ router.put('/:id', (req, res) => {
 		})
 })
 
-// show route
-router.get('/mine', (req, res) => {
-	const restaurantId = req.params.id
-	Restaurant.findById(restaurantId)
-		.then(restaurant => {
-            const {username, loggedIn, userId} = req.session
-			res.render('restaurant/show', { restaurant, username, loggedIn, userId })
-		})
-		.catch((error) => {
-			res.redirect(`/error?error=${error}`)
-		})
-})
+
 
 // delete route
 router.delete('/:id', (req, res) => {
@@ -158,6 +127,24 @@ router.delete('/:id', (req, res) => {
 			res.redirect(`/error?error=${error}`)
 		})
 })
+
+
+// SHOW ROUTE-- GET
+// read,   find and display one resource
+router.get('/:id', (req, res) => {
+    const id = req.params.id
+    Restaurant.findById(id)
+        .populate('owner')
+        .then(restaurant => {
+
+            res.render('restaurant/show', {restaurant, ...req.session})
+        })
+        .catch(err => {
+            console.log(err)
+            res.redirect(`/error?error=${err}`)
+        })
+})
+
 
 // Export the Router
 module.exports = router
