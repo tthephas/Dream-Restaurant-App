@@ -11,7 +11,7 @@ const { Schema } = mongoose
 const menuItemsSchema = {
 	type: {
 		type: String,
-		enum: ['entree', 'appetizer', 'dessert']
+		enum: ['Entree', 'Appetizer', 'Dessert']
 	},
 	name: { 
 		type: String,

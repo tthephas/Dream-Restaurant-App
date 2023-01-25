@@ -10,12 +10,24 @@
             <h5 class="card-title">
               Cuisine: {{ restaurant.cuisine }}</br></br>
             </h5>
+
             <p class="card-text">
               Menu </br></br>
-              Appetizer : {{ restaurant.menuItems[0].appetizer }} </br></br>
-              Entree : {{ restaurant.menuItems[0].entree }} </br></br>
-              Dessert : {{ restaurant.menuItems[0].dessert }} 
+
+              
+              {% for items in restaurant.menuItems %}
+              {{ items.type}}
+              </br>
+              {{ items.name }}
+              <span class="ms-5">{{ items.price}}$</span>
+              </br></br>
+              {% endfor %}
+
+
+
+              
             </p>
+
             <p class="card-text">
               </br>Location: {{ restaurant.location }}
             </p>
