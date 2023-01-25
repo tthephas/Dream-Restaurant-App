@@ -68,18 +68,18 @@ router.get('/new', (req, res) => {
 // create -> POST route that actually calls the db and makes a new document
 router.post('/', (req, res) => {
 	req.body.owner = req.session.userId
-	//req.body.ready = req.body.ready === 'on' ? true : false
+
 	const newRestaurant = req.body
 	
 	Restaurant.create(newRestaurant)
-		.then(restaurant => {
-			restaurant.menuItems.push(newRestaurant)
-			return restaurant.save()	
-		})
+		// .then(restaurant => {
+		// 	restaurant.menuItems.push(newRestaurant)
+		// 	return restaurant.save()	
+		// })
 		.then(restaurant => {
 			console.log('this was returned from create', restaurant)
 			
-			res.redirect(`/restaurant/`)
+			//res.redirect(`/restaurant/`)
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
@@ -89,6 +89,7 @@ router.post('/', (req, res) => {
 // edit route -> GET that takes us to the edit form view
 router.get('/:id/edit', (req, res) => {
 	// we need to get the id
+	console.log('finding this rest ')
 	const restaurantId = req.params.id
 	Restaurant.findById(restaurantId)
 		.then(restaurant => {
@@ -98,6 +99,8 @@ router.get('/:id/edit', (req, res) => {
 			res.redirect(`/error?error=${error}`)
 		})
 })
+
+
 
 // update route
 router.put('/:id', (req, res) => {

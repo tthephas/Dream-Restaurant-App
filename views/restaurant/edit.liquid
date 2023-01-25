@@ -22,24 +22,15 @@
           </br>
         <label class="form-label">Menu Items</label>
         </br>
-        <label class="form-label">Appetizer:</label>
-        <input
-          type="text"
-          name="appetizer"
-          value="{{ restaurant.menuItems[0].appetizer }}"
-          class="form-control">
-        <label class="form-label">Entree:</label>
-        <input
-          type="text"
-          name="entree"
-          value="{{ restaurant.menuItems[0].entree }}"
-          class="form-control">
-        <label class="form-label">Dessert:</label>
-        <input
-          type="text"
-          name="dessert"
-          value="{{ restaurant.menuItems[0].dessert }}"
-          class="form-control">
+        
+        {% for items in restaurant.menuItems %}
+          {{ items.type}}
+          </br>
+          {{ items.name }}
+          <span class="ms-5">{{ items.price}}$</span>
+          </br></br>
+        {% endfor %}
+
           </br>
         <label class="form-label">Location:</label>
         <input

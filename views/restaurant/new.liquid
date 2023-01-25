@@ -16,22 +16,25 @@
           name="cuisine"
           placeholder="restaurant cuisine (ex: Sushi, Italian, American, etc)"
           class="form-control">
+          </br>
         <label class="form-label">Menu Items:</label></br>
-        <label class="form-label">Appetizer:</label>
-        <input
-          type="text"
-          name="appetizer"
-          class="form-control">
-        <label class="form-label">Entree:</label>
-        <input
-          type="text"
-          name="entree"
-          class="form-control">
-        <label class="form-label">Dessert:</label>
-        <input
-          type="text"
-          name="dessert"
-          class="form-control">
+
+        <select name="menuItems.type" >
+          <option value="Appetizer">Appetizer</option>
+          <option value="Entree">Entree</option>
+          <option value="Dessert">Dessert</option>
+          <a>
+            <input
+            type="text"
+            name="menuItems.name"
+            class="form-control">
+          </a>
+          
+        </select></br>
+
+
+
+        </br></br></br>
         <label class="form-label">Location:</label>
         <input
           type="text"

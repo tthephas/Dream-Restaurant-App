@@ -19,7 +19,7 @@ const menuItemsSchema = {
 	},
 	price: {
 		type: Number,
-		required: true
+		//required: true
 	}
 }
 
