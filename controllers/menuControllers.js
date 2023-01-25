@@ -23,18 +23,15 @@ router.put('/:restaurantId', (req, res) => {
     console.log('this is the restaurant id ', restaurantId)
     console.log('these are the new menu items ', req.body)
     
-    const newApp = req.body.appetizer
-    const newEnt = req.body.entree
-    const newDes = req.body.dessert
-    
+
     Restaurant.findById(restaurantId)
+        // .then(restaurant => {
+        //     // restaurant.appetizer.push(newApp)
+        //     // restaurant.entree.push(newEnt)
+        //     // restaurant.dessert.push(newDes)
+        //     //return restaurant.save()
+        // })
         .then(restaurant => {
-            restaurant.appetizer.push(newApp)
-            restaurant.entree.push(newEnt)
-            restaurant.dessert.push(newDes)
-            //return restaurant.save()
-        })
-        .then(car => {
             res.redirect(`/restaurant/${restaurant.id}`)
         })
         .catch(err => {

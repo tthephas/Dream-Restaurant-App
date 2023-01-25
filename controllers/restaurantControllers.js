@@ -57,6 +57,20 @@ router.get('/mine', (req, res) => {
 		})
 })
 
+// index that shows only the user's examples
+router.get('/:id', (req, res) => {
+    // destructure user info from req.session
+    const { username, userId, loggedIn } = req.session
+	Restaurant.find({ owner: userId })
+		.then(restaurants => {
+			res.render('restaurant/show', { restaurants, username, loggedIn })
+		})
+		.catch(error => {
+			res.redirect(`/error?error=${error}`)
+		})
+})
+
+
 
 
 // new route -> GET route that renders our page with the form
@@ -70,7 +84,7 @@ router.post('/', (req, res) => {
 	req.body.owner = req.session.userId
 
 	const newRestaurant = req.body
-	
+	console.log('this is req body ', req.body)
 	Restaurant.create(newRestaurant)
 		// .then(restaurant => {
 		// 	restaurant.menuItems.push(newRestaurant)
@@ -78,8 +92,7 @@ router.post('/', (req, res) => {
 		// })
 		.then(restaurant => {
 			console.log('this was returned from create', restaurant)
-			
-			//res.redirect(`/restaurant/`)
+			res.redirect(`/restaurant/${restaurant.id}`)
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
@@ -139,7 +152,7 @@ router.delete('/:id', (req, res) => {
 	const restaurantId = req.params.id
 	Restaurant.findByIdAndRemove(restaurantId)
 		.then(restaurants => {
-			res.redirect('/restaurant')
+			res.redirect('/restaurant/index')
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)

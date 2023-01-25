@@ -3,7 +3,7 @@
   <div class="container-sm">
     <form action="/restaurant/{{restaurant._id}}?_method=PUT" method="POST">
       <fieldset>
-        <legend>Edit   {{ restaurant.name }} </legend>
+        <legend>Edit (ADD MENU ITEMS)   {{ restaurant.name }} </legend>
         <label class="form-label">Name: 
         </label>
         <input
@@ -20,16 +20,26 @@
           value="{{ restaurant.cuisine }}"
           class="form-control">
           </br>
-        <label class="form-label">Menu Items</label>
+        <label class="form-label"> ADD Menu Items</label>
         </br>
-        
-        {% for items in restaurant.menuItems %}
-          {{ items.dishType}}
-          </br>
-          {{ items.dishName }}
-          <span class="ms-5">{{ items.price}}$</span>
-          </br></br>
-        {% endfor %}
+
+        <label class="form-label">Menu Items:</label></br>
+
+        <select name="dishType">
+          <option value="Appetizer">Appetizer</option>
+          <option value="Entree">Entree</option>
+          <option value="Dessert">Dessert</option>
+        </select>
+          <input
+            type="text"
+            name="dishName"
+            placeholder="name of dish"
+            class="form-control">
+          <input
+            type="number"
+            name="price"
+            placeholder="price of dish"
+            class="form-control">
 
           </br>
         <label class="form-label">Location:</label>
