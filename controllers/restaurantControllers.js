@@ -26,6 +26,8 @@ router.use((req, res, next) => {
 
 // Routes
 
+
+// GET
 // index ALL shows all restaurants, regardless of owner
 router.get('/', (req, res) => {
 	Restaurant.find({})
