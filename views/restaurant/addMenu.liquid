@@ -6,6 +6,7 @@
         <legend>ADD MENU ITEMS </legend>
         <label class="form-label">Name: 
         </label>
+{% comment %}
         <input
           type="text"
           name="name"
@@ -13,6 +14,8 @@
           value="{{ restaurant.name }}"
           class="form-control">
         <label class="form-label mt-3">Cuisine:</label>
+{% endcomment %}
+
         <input
           type="text"
           name="cuisine"

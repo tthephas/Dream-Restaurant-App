@@ -4,12 +4,15 @@
     <h2 class="display-6">My Favorite Restaurants</h2>
     <div class="row">
       {% for restaurant in restaurants %}
-        <div class="card" style="width: 18rem;">
+        <div class="card" style="width: 24rem;">
           <h5 class="card-header">{{ restaurant.name }}</h5>
           <div class="card-body">
-            <h5 class="card-title">
+        {% comment %}    
+          <h5 class="card-title">
               Cuisine: {{ restaurant.cuisine }}</br></br>
-            </h5>
+          </h5>
+        {% endcomment %}
+          
             <p class="card-text">
               Menu </br></br> 
 
