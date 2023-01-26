@@ -12,11 +12,11 @@
 
 </head>
 
-<body>
+<body style="background-color:antiquewhite">
     <header>
         {% render './navbar.liquid', loggedIn: loggedIn, username: username, userId: userId %}
     </header>
-    <main>
+    <main style="background-color:antiquewhite">
         {% block content %} 
         {% endblock %}
     </main>

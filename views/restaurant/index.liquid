@@ -1,45 +1,51 @@
 {% layout 'layout.liquid' %}
 {% block content %}
   <div>
-    <h2 class="display-6">All Restaurants</h2>
+    <h2 class="display-6 ms-5">All Menus</h2>
     <div class="row">
       {% for restaurant in restaurants %}
-        <div class="card" style="width: 20rem;">
-          <h5 class="card-header">{{ restaurant.name }}</h5>
-          <div class="card-body">
+        <div class="card ms-3 mb-3" style="width: 20rem; border:3px solid black; background-color:rgb(235, 233, 233)" >
+          <h4 class="card-header" style="font-weight: bold; font-style: italic; font-family: fantasy; text-align:center">{{ restaurant.name }}</h4>
+          <div class="card-body" style="background-color:lightyellow">
       {% comment %}
             <h5 class="card-title">
               Cuisine: {{ restaurant.cuisine }}</br></br>
             </h5>
-      {% endcomment %}
+      
+            
+            styling ideas
+            style="color: red; font-weight: bold; font-size: 2em;"
+            <h6 class="font-weight: bolder; ms-5">Menu</h6>
+          {% endcomment %}
+            <p class="card-text" style="text-align:center"  >
+               
 
-            <p class="card-text">
-              Menu </br></br>
-
-              
               {% for items in restaurant.menuItems %}
-              {{ items.dishType}}
+              <span style="font-style:italic">{{ items.dishType}}</span>
+                
               </br>
-              {{ items.dishName }}
-              <span class="ms-5">{{ items.price}}$</span>
+              <span style="font-weight:bolder">
+                {{ items.dishName }}
+              </span>
+              </br>
+              <span >{{ items.price}}$</span>
               </br></br>
               {% endfor %}
 
             </p>
+            
+            </div>
+            <p class="card-footer" style="font-style: italic; " >
+              Location: {{ restaurant.location }}
+              </br>Owner: {{ restaurant.owner.username }}
+            </p>
 
-            <p class="card-text">
-              </br>Location: {{ restaurant.location }}
-            </p>
-            <p class="card-text">
-                </br>Owner: {{ restaurant.owner.username }}
-            </p>
 
             {% if restaurant.owner.username == username %}
-              <a href="/restaurant/edit/{{restaurant.id}}" class="btn btn-info">
+              <a href="/restaurant/edit/{{restaurant.id}}" class="btn btn-info mb-2">
                 View {{ restaurant.name }}
               </a>
             {% endif %}
-          </div>
         </div>
       {% endfor %}
     </div>
