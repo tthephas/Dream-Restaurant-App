@@ -52,13 +52,15 @@ router.get('/new', (req, res) => {
 // create -> POST route that actually calls the db and makes a new document
 router.post('/', (req, res) => {
 	req.body.owner = req.session.userId
-
+	const id = req.params.id
 	const newRestaurant = req.body
-	console.log('this is req body ', req.body)
+	console.log('this is req body ', newRestaurant)
 	Restaurant.create(newRestaurant)
 
 		.then(restaurant => {
-
+			
+			console.log('full new rest ', newRestaurant)
+			console.log('full new rest ', id)
 			res.redirect(`/restaurant/${restaurant.id}`)
 		})
 		.catch(error => {
