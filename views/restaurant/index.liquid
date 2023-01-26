@@ -4,8 +4,8 @@
     <h2 class="display-6 ms-5">All Menus</h2>
     <div class="row">
       {% for restaurant in restaurants %}
-        <div class="card" style="width: 20rem; border:3px solid black; background-color:rgb(235, 233, 233)" >
-          <h4 class="card-header" style="font-weight: bold; font-style: italic; font-family: fantasy;">{{ restaurant.name }}</h4>
+        <div class="card ms-3 mb-3" style="width: 20rem; border:3px solid black; background-color:rgb(235, 233, 233)" >
+          <h4 class="card-header" style="font-weight: bold; font-style: italic; font-family: fantasy; text-align:center">{{ restaurant.name }}</h4>
           <div class="card-body" style="background-color:lightyellow">
       {% comment %}
             <h5 class="card-title">
@@ -17,8 +17,8 @@
             style="color: red; font-weight: bold; font-size: 2em;"
             <h6 class="font-weight: bolder; ms-5">Menu</h6>
           {% endcomment %}
-            <p class="card-text" >
-               </br>
+            <p class="card-text" style="text-align:center"  >
+               
 
               {% for items in restaurant.menuItems %}
               <span style="font-style:italic">{{ items.dishType}}</span>
@@ -27,8 +27,8 @@
               <span style="font-weight:bolder">
                 {{ items.dishName }}
               </span>
-                
-              <span class="ms-5" >{{ items.price}}$</span>
+              </br>
+              <span >{{ items.price}}$</span>
               </br></br>
               {% endfor %}
 
