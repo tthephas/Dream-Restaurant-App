@@ -3,69 +3,65 @@
   <div>
     <h2 class="display-6">My SHOW PAGE</h2>
     <div class="row">
-      
-        <div class="card ms-3 mb-3" style="width: 20rem; border:3px solid black; background-color:rgb(235, 233, 233)">
-          <h5 class="card-header">{{ restaurant.name }}</h5>
-            <div class="card-body">
-                        {% comment %}    
-                          <h5 class="card-title">
-                              Cuisine: {{ restaurant.cuisine }}</br></br>
-                          </h5>
-                        {% endcomment %}
-                <p class="card-text">
-                  </br>Location: {{ restaurant.location }}
-                </p>
-                <p class="card-text">
-                  </br>Owner: {{ restaurant.owner.username }}
-                </p>
-            </div>
-        </div>
-
-        <div class="card ms-3 mb-3" style="width: 20rem; border:3px solid black; background-color:rgb(235, 233, 233)">
-          <label class="form-label">Menu Items:</label></br>
-          <select name="dishType">
-            <option value="Appetizer">Appetizer</option>
-            <option value="Entree">Entree</option>
-            <option value="Dessert">Dessert</option>
-          </select>
-            <input
-              type="text"
-              name="dishName"
-              placeholder="name of dish"
-              class="form-control">
-            <input
-              type="number"
-              name="price"
-              placeholder="price of dish"
-              class="form-control">
-        </div>
-        
-            <p class="card-text">
-              Menu </br></br> 
-
-              {% for items in restaurant.menuItems %}
-              {{ items.dishType }}
-              </br>
-              {{ items.dishName }}
-              <span class="ms-5">{{ items.price}}$</span>
-              </br></br>
-              {% endfor %}
+      <div class="card ms-5 mb-3" style="width: 30rem; border:3px solid black; background-color:rgb(235, 233, 233)">
+        <h5 class="card-header">{{ restaurant.name }}</h5>
+        <div class="card-body">
+          <p class="card-text">
+            </br>Location: {{ restaurant.location }}
             </p>
+            <p class="card-text">
+              </br>Owner: {{ restaurant.owner.username }}
+              </p>
+              </div>
+              </div>
+        <div class="card ms-5 mb-3" style="width: 30rem; border:3px solid black; background-color:rgb(235, 233, 233)">
+          <form action="/restaurant/{{restaurant._id}}?_method=PUT" method="POST">
+          <fieldset>
 
-            <div>
-              <a href="/restaurant/edit/{{ restaurant.id }}" class="btn btn-info" > Add Menu Items </a>
-                <form action="/restaurant/{{ restaurant.id }}?_method=DELETE" method="POST">
-                <input 
-                    type="submit" 
-                    class="btn btn-danger" 
-                    value="Delete">
-                </form>
-            </div>
+            <label class="form-label">ADD Menu Items:</label></br>
+              <select name="dishType">
+                <option value="Appetizer">Appetizer</option>
+                <option value="Entree">Entree</option>
+                <option value="Dessert">Dessert</option>
+              </select>
+              <input
+                type="text"
+                name="dishName"
+                placeholder="name of dish"
+                class="form-control">
+              <input
+                type="number"
+                name="price"
+                placeholder="price of dish"
+                class="form-control">
+              <input 
+                type="submit" 
+                class="btn btn-success mt-4"
+                value="submit">
+                
+          </fieldset>
+        </div>
+        <div></div>
+        <div class="card ms-3 mb-3" style="width: 20rem; border:3px solid black; background-color:rgb(235, 233, 233)">
+            Menu </br></br> 
 
-
-
-
-
-    </div>
+            {% for items in restaurant.menuItems %}
+            {{ items.dishType }}
+            </br>
+            {{ items.dishName }}
+            <span class="ms-5">{{ items.price}}$</span>
+            </br></br>
+            {% endfor %}
+          </form>
+        </div>
+        <div>
+            <form action="/restaurant/{{ restaurant.id }}?_method=DELETE" method="POST">
+            <input 
+                type="submit" 
+                class="btn btn-danger" 
+                value="Delete">
+            </form>
+        </div>
+      </div>
   </div>
 {% endblock %}

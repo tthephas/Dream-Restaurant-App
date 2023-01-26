@@ -63,7 +63,7 @@ router.post('/', (req, res) => {
 
 		.then(restaurant => {
 			console.log('full new rest ', restaurant)
-			res.redirect(`/restaurant/addMenu/${restaurant.id}`)
+			res.redirect(`/restaurant/${restaurant.id}`)
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
@@ -137,7 +137,7 @@ router.put('/:id', (req, res) => {
 		})
 		.then(() => {
 			console.log(allinfo)
-			res.redirect(`/restaurant/mine`)
+			res.redirect(`/restaurant/${restaurantId}`)
 		})
 		.catch((error) => {
 			//res.redirect(`/error?error=${error}`)
