@@ -22,10 +22,26 @@
           value="{{ restaurant.cuisine }}"
           class="form-control">
           </br>
-        <label class="form-label"> ADD Menu Items</label>
-        </br>
 
-        <label class="form-label">Menu Items:</label></br>
+{% comment %}
+Create if statement. If there is an app, entree, or dessert, list it here for editing options.
+This did not work. not populating any items.
+{% if restaurant.menuItems.dishType.length > 0 %}
+          <input
+          type="text"
+          name="dishType"
+          placeholder="{{ restaurant.menuItems.dishType }}"
+          value="{{ restaurant.menuItems.dishType }}"
+          class="form-control">
+          </br>
+
+{% endif %}
+{% endcomment %}
+        
+        
+        
+          <label class="form-label"> ADD Menu Items</label>
+        </br>
 
         <select name="dishType">
           <option value="Appetizer">Appetizer</option>
