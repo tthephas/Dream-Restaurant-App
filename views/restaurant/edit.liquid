@@ -3,9 +3,10 @@
   <div class="container-sm">
     <form action="/restaurant/{{restaurant._id}}?_method=PUT" method="POST">
       <fieldset>
-        <legend>Edit (ADD MENU ITEMS)   {{ restaurant.name }} </legend>
+        <legend>EDIT menu or ADD menu items </legend>
         <label class="form-label">Name: 
         </label>
+
         <input
           type="text"
           name="name"
@@ -13,6 +14,7 @@
           value="{{ restaurant.name }}"
           class="form-control">
         <label class="form-label mt-3">Cuisine:</label>
+
         <input
           type="text"
           name="cuisine"
@@ -20,10 +22,26 @@
           value="{{ restaurant.cuisine }}"
           class="form-control">
           </br>
-        <label class="form-label"> ADD Menu Items</label>
-        </br>
 
-        <label class="form-label">Menu Items:</label></br>
+{% comment %}
+Create if statement. If there is an app, entree, or dessert, list it here for editing options.
+This did not work. not populating any items.
+{% if restaurant.menuItems.dishType.length > 0 %}
+          <input
+          type="text"
+          name="dishType"
+          placeholder="{{ restaurant.menuItems.dishType }}"
+          value="{{ restaurant.menuItems.dishType }}"
+          class="form-control">
+          </br>
+
+{% endif %}
+{% endcomment %}
+        
+        
+        
+          <label class="form-label"> ADD Menu Items</label>
+        </br>
 
         <select name="dishType">
           <option value="Appetizer">Appetizer</option>
@@ -50,8 +68,19 @@
           class="form-control">
 
       </fieldset>
-        <input type="submit" class="btn btn-success mt-4">         
+
+      <input 
+      type="submit" 
+      class="btn btn-success mt-4">
+      
         <a href="/restaurant/mine" class="btn btn-warning mt-4">Back</a>
-    </form>
+      </form>
+      <form action="/restaurant/{{ restaurant.id }}?_method=DELETE" method="POST">
+      <input 
+          type="submit" 
+          class="btn btn-danger" 
+          value="Delete">
+      </form>
+      
   </div>
 {% endblock %}

@@ -1,11 +1,21 @@
 {% layout "layout.liquid" %}
 {% block content %}
+{% if session.userId == userId %}
+<h1>Welcome to the Dream Restaurant Builder!
+    </br>
+    </br>
+    Please Sign up or Log in to continue!     
 
-    <h1>Welcome to the Dream Restaurant Builder!
-        </br>
-        </br>
-        Please Sign up or Log in to continue! 
     </h1>
+{% else %}
+<h1>Welcome to your Dream Restaurant Builder!
+
+    </h1>
+
+    
+
+{% endif %}
+
 
 
 {% endblock %}

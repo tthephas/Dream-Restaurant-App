@@ -26,6 +26,8 @@ router.use((req, res, next) => {
 
 // Routes
 
+
+// GET
 // index ALL shows all restaurants, regardless of owner
 router.get('/', (req, res) => {
 	Restaurant.find({})
@@ -33,8 +35,9 @@ router.get('/', (req, res) => {
 		.then(restaurants => {
 			const username = req.session.username
 			const loggedIn = req.session.loggedIn
+			const userId = req.session.loggedIn
 			//res.json({ restaurants: restaurants})
-			res.render('restaurant/index', { restaurants, username, loggedIn })
+			res.render('restaurant/index', { restaurants, username, loggedIn, userId })
 			
 		})
 		.catch(error => {
@@ -42,19 +45,20 @@ router.get('/', (req, res) => {
 		})
 })
 
-// new route -> GET route that renders our page with the form
+// GET route that renders our page with the form
+// the form to build a NEW restaurant
 router.get('/new', (req, res) => {
 	const { username, userId, loggedIn } = req.session
 	
-	res.render('restaurant/new', { username, loggedIn })
+	res.render('restaurant/new', { username, loggedIn, userId })
 })
 
-// create -> POST route that actually calls the db and makes a new document
+// CREATE
+// POST route that actually calls the db and makes a new document
 router.post('/', (req, res) => {
 	req.body.owner = req.session.userId
 	const id = req.params.id
 	const newRestaurant = req.body
-	console.log('this is req body ', newRestaurant)
 	Restaurant.create(newRestaurant)
 
 		.then(restaurant => {
@@ -70,14 +74,14 @@ router.post('/', (req, res) => {
 })
 
 /// GET only for users restaurants
-// index that shows only the user's examples
+// index that shows ONLY THE USER'S RESTAURANTS
 router.get('/mine', (req, res) => {
     // destructure user info from req.session
     const { username, userId, loggedIn } = req.session
 	Restaurant.find({ owner: userId })
 		.populate('owner')
 		.then(restaurants => {
-			res.render('restaurant/show', { restaurants, username, loggedIn })
+			res.render('restaurant/index', { restaurants, username, loggedIn })
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
@@ -117,7 +121,7 @@ router.get('/edit/:id', (req, res) => {
 })
 
 
-//PUT ROUTE TO UPDATE A RESTAURANT
+// PUT ROUTE TO UPDATE A RESTAURANT
 // // update route
 router.put('/:id', (req, res) => {
 	const restaurantId = req.params.id
@@ -126,11 +130,15 @@ router.put('/:id', (req, res) => {
 	console.log('updating this rest', restaurantId)
 	Restaurant.findById(restaurantId)
 		.then(restaurant => {
+			if (restaurant.owner == req.session.userId) {
+							
 			restaurant.menuItems.push(allinfo)
 			return restaurant.save()
+			} else {
+				res.redirect(`/error?error=You%20Are%20not%20allowed%20to%20edit%20this%20restaurant`)
+			}
 		})
 		.then(() => {
-			
 			console.log(allinfo)
 			res.redirect(`/restaurant/mine`)
 		})
@@ -147,8 +155,12 @@ router.delete('/:id', (req, res) => {
 	
 	Restaurant.findById(restaurantId)
 		.then(restaurant => {
-			console.log('trying to delete ', restaurantId)
-			return restaurant.deleteOne()
+			if (restaurant.owner == req.session.userId) {
+				console.log('trying to delete ', restaurantId)
+				return restaurant.deleteOne()
+			} else {
+				res.redirect(`/error?error=You%20Are%20not%20allowed%20to%20delete%20this%20restaurant`)
+			}
 		})
 		.then(() => {
 			res.redirect('/restaurant/mine')

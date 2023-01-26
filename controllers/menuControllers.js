@@ -18,12 +18,10 @@ const router = express.Router()
 // test menu id    63d137567d6bc0b428405f48
 // for Ryan's french bistro
 router.put('/:restaurantId', (req, res) => {
+
     const menuItems = req.body.dishName
-
-
     console.log('these are the new menu items ', menuItems)
     
-
     Restaurant.findById(restaurantId)
         // .then(restaurant => {
         //     // restaurant.appetizer.push(newApp)

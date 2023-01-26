@@ -34,10 +34,12 @@ app.use('/auth', UserRouter)
 app.use('/restaurant', RestaurantRouter)
 
 // Home route
-app.get('/', (req, res) => {
+app.get('/home', (req, res) => {
     const { username, userId, loggedIn } = req.session
-	res.render('home.liquid', { loggedIn, username, userId })
+	res.render('home', { loggedIn, username, userId })
 })
+
+
 
 
 /// LEAVE THIS ALONE BELOW
