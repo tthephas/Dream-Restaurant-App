@@ -153,8 +153,12 @@ router.delete('/:id', (req, res) => {
 	
 	Restaurant.findById(restaurantId)
 		.then(restaurant => {
-			console.log('trying to delete ', restaurantId)
-			return restaurant.deleteOne()
+			if (restaurant.owner == req.session.userId) {
+				console.log('trying to delete ', restaurantId)
+				return restaurant.deleteOne()
+			} else {
+				res.redirect(`/error?error=You%20Are%20not%20allowed%20to%20delete%20this%20restaurant`)
+			}
 		})
 		.then(() => {
 			res.redirect('/restaurant/mine')
