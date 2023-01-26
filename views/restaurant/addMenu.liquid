@@ -1,0 +1,52 @@
+{% layout 'layout.liquid' %}
+{% block content %}
+  <div class="container-sm">
+    <form action="/restaurant/{{restaurant._id}}?_method=PUT" method="POST">
+      <fieldset>
+        <legend>ADD MENU ITEMS </legend>
+        <label class="form-label">Name: 
+        </label>
+        <input
+          type="text"
+          name="name"
+          placeholder="{{ restaurant.name }}"
+          value="{{ restaurant.name }}"
+          class="form-control">
+        <label class="form-label mt-3">Cuisine:</label>
+        <input
+          type="text"
+          name="cuisine"
+          placeholder="{{ restaurant.cuisine }}"
+          value="{{ restaurant.cuisine }}"
+          class="form-control">
+          </br>
+        <label class="form-label"> ADD Menu Items</label>
+        </br>
+
+        <label class="form-label">Menu Items:</label></br>
+
+        <select name="dishType">
+          <option value="Appetizer">Appetizer</option>
+          <option value="Entree">Entree</option>
+          <option value="Dessert">Dessert</option>
+        </select>
+          <input
+            type="text"
+            name="dishName"
+            placeholder="name of dish"
+            class="form-control">
+          <input
+            type="number"
+            name="price"
+            placeholder="price of dish"
+            class="form-control">
+
+          </br>
+
+
+      </fieldset>
+        <input type="submit" class="btn btn-success mt-4">         
+        <a href="/restaurant/mine" class="btn btn-warning mt-4">Back</a>
+    </form>
+  </div>
+{% endblock %}

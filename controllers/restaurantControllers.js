@@ -61,7 +61,8 @@ router.post('/', (req, res) => {
 			
 			console.log('full new rest ', newRestaurant)
 			console.log('full new rest ', id)
-			res.redirect(`/restaurant/${restaurant.id}`)
+			//res.redirect(`/restaurant/${restaurant.id}`)
+			res.redirect(`/restaurant/addMenu/${restaurant.id}`)
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
@@ -82,6 +83,23 @@ router.get('/mine', (req, res) => {
 			res.redirect(`/error?error=${error}`)
 		})
 })
+
+
+/// GET for adding menu items
+// index that shows only the user's examples
+router.get('/addMenu/:id', (req, res) => {
+    // destructure user info from req.session
+    const restaurantId = req.params.id
+	Restaurant.findById(restaurantId)
+		
+		.then(restaurant => {
+			res.render('restaurant/addMenu', { restaurant, ...req.session})
+		})
+		.catch(error => {
+			res.redirect(`/error?error=${error}`)
+		})
+})
+
 
 
 // GET route
@@ -126,13 +144,14 @@ router.put('/:id', (req, res) => {
 // delete route
 router.delete('/:id', (req, res) => {
 	const restaurantId = req.params.id
-	console.log('trying to delete ', restaurantId)
+	
 	Restaurant.findById(restaurantId)
 		.then(restaurant => {
+			console.log('trying to delete ', restaurantId)
 			return restaurant.deleteOne()
 		})
 		.then(() => {
-			res.redirect('/restaurant/index')
+			res.redirect('/restaurant/mine')
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
@@ -144,6 +163,7 @@ router.delete('/:id', (req, res) => {
 // read,   find and display one resource
 router.get('/:id', (req, res) => {
     const id = req.params.id
+	
     Restaurant.findById(id)
         .populate('owner')
         .then(restaurant => {
