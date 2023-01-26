@@ -13,10 +13,9 @@ const router = express.Router()
 
 // ROUTES
 
-// menu items are a sub document. menu items can only be edited by the owner/logged in user. They can be built by the logged in user. All three items are required (1 of each , appetizer, entree, dessert).
+// menu items are a sub document. menu items can only be edited by the owner/logged in user. They can be built by the logged in user. 
 
-// test menu id    63d137567d6bc0b428405f48
-// for Ryan's french bistro
+
 router.put('/:restaurantId', (req, res) => {
 
     const menuItems = req.body.dishName

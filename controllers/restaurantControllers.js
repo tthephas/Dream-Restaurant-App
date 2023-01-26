@@ -62,7 +62,6 @@ router.post('/', (req, res) => {
 	Restaurant.create(newRestaurant)
 
 		.then(restaurant => {
-			
 			console.log('full new rest ', restaurant)
 			res.redirect(`/restaurant/addMenu/${restaurant.id}`)
 		})
@@ -141,7 +140,8 @@ router.put('/:id', (req, res) => {
 			res.redirect(`/restaurant/mine`)
 		})
 		.catch((error) => {
-			res.redirect(`/error?error=${error}`)
+			//res.redirect(`/error?error=${error}`)
+			res.redirect(`/error?error=ERROR-%20You%20must%20enter%20a%20dish%20name`)
 		})
 })
 
