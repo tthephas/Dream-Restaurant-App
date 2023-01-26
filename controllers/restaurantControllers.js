@@ -63,9 +63,7 @@ router.post('/', (req, res) => {
 
 		.then(restaurant => {
 			
-			console.log('full new rest ', newRestaurant)
-			console.log('full new rest ', id)
-			//res.redirect(`/restaurant/${restaurant.id}`)
+			console.log('full new rest ', restaurant)
 			res.redirect(`/restaurant/addMenu/${restaurant.id}`)
 		})
 		.catch(error => {
