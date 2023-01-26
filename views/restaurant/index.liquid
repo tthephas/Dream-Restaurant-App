@@ -33,9 +33,12 @@
             <p class="card-text">
                 </br>Owner: {{ restaurant.owner.username }}
             </p>
-            <a href="/restaurant/edit/{{restaurant.id}}" class="btn btn-info">
-              View {{ restaurant.name }}
-            </a>
+
+            {% if restaurant.owner.username == username %}
+              <a href="/restaurant/edit/{{restaurant.id}}" class="btn btn-info">
+                View {{ restaurant.name }}
+              </a>
+            {% endif %}
           </div>
         </div>
       {% endfor %}
