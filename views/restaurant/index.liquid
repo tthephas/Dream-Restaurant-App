@@ -5,29 +5,33 @@
     <div class="row">
       {% for restaurant in restaurants %}
         <div class="card" style="width: 20rem;">
-          <h5 class="card-header">{{ restaurant.name }}</h5>
+          <h4 class="card-header" style="font-weight: bold; font-style: italic; font-family: fantasy;">{{ restaurant.name }}</h4>
           <div class="card-body">
       {% comment %}
             <h5 class="card-title">
               Cuisine: {{ restaurant.cuisine }}</br></br>
             </h5>
+      
+            
+            styling ideas
+            style="color: red; font-weight: bold; font-size: 2em;"
       {% endcomment %}
-
-            <p class="card-text">
-              Menu </br></br>
+        <h6 class="font-weight: bolder; ms-5">Menu</h6>
+            <p class="card-text" >
+               </br></br>
 
               
               {% for items in restaurant.menuItems %}
               {{ items.dishType}}
               </br>
               {{ items.dishName }}
-              <span class="ms-5">{{ items.price}}$</span>
+              <span class="ms-5" >{{ items.price}}$</span>
               </br></br>
               {% endfor %}
 
             </p>
 
-            <p class="card-text">
+            <p class="card-text" style="font-style: italic; " >
               </br>Location: {{ restaurant.location }}
             </p>
             <p class="card-text">

@@ -4,9 +4,9 @@
     <!-- Just an image -->
     <nav class="navbar navbar-light bg-light ml-3"></nav>
     <div class="container-fluid">
-      <a href="/home" class="navbar-brand me-3">Dream Restaurant Buildr</a>
+      <a href="/home" class="navbar-brand me-5">Dream Restaurant Buildr</a>
       {% if loggedIn %}
-        <a href="/restaurant/mine" class="nav-link text-light me-3">Hello {{ username }}
+        <a href="/restaurant/mine" class="nav-link text-light me-5">Hello {{ username }}
         </a>
       {% endif %}
       <button
@@ -21,13 +21,13 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         {% if loggedIn %}
-          <a href="/restaurant" class="nav-link text-light me-3">View All</a>
-          <a href="/restaurant/new" class="nav-link text-light me-3">New</a>
-          <a href="/restaurant/mine" class="nav-link text-light me-3">My Restaurants</a>
-          <a href="/auth/logout" class="nav-link text-light me-3">Log Out</a>
+          <a href="/restaurant" class="nav-link text-light me-5">View All</a>
+          <a href="/restaurant/new" class="nav-link text-light me-5">New</a>
+          <a href="/restaurant/mine" class="nav-link text-light me-5">My Restaurants</a>
+          <a href="/auth/logout" class="nav-link text-light me-5">Log Out</a>
         {% else %}
-          <a href="/auth/signup" class="nav-link text-light me-3">Sign Up</a>
-          <a href="/auth/login" class="nav-link text-light me-3">Log In</a>
+          <a href="/auth/signup" class="nav-link text-light me-5">Sign Up</a>
+          <a href="/auth/login" class="nav-link text-light me-5">Log In</a>
         {% endif %}
       </div>
     </div>
