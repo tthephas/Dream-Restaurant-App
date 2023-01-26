@@ -105,7 +105,12 @@ router.put('/:id', (req, res) => {
 	/// tests to get to the menu items id
 	console.log('updating this rest', restaurantId)
 	Restaurant.findById(restaurantId)
-		.then((restaurant) => {
+		.then(restaurant => {
+			restaurant.menuItems.push(allinfo)
+			return restaurant.save()
+		})
+		.then(() => {
+			
 			console.log(allinfo)
 			res.redirect(`/restaurant/mine`)
 		})
@@ -119,8 +124,12 @@ router.put('/:id', (req, res) => {
 // delete route
 router.delete('/:id', (req, res) => {
 	const restaurantId = req.params.id
-	Restaurant.findByIdAndRemove(restaurantId)
-		.then(restaurants => {
+	console.log('trying to delete ', restaurantId)
+	Restaurant.findById(restaurantId)
+		.then(restaurant => {
+			return restaurant.deleteOne()
+		})
+		.then(() => {
 			res.redirect('/restaurant/index')
 		})
 		.catch(error => {

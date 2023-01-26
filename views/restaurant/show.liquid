@@ -11,10 +11,10 @@
               Cuisine: {{ restaurant.cuisine }}</br></br>
             </h5>
             <p class="card-text">
-              Menu </br></br>
+              Menu </br></br> 
 
               {% for items in restaurant.menuItems %}
-              {{ items.dishType}}
+              {{ items.dishType }}
               </br>
               {{ items.dishName }}
               <span class="ms-5">{{ items.price}}$</span>
