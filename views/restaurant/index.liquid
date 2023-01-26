@@ -4,9 +4,9 @@
     <h2 class="display-6">All Restaurants</h2>
     <div class="row">
       {% for restaurant in restaurants %}
-        <div class="card" style="width: 20rem;">
+        <div class="card" style="width: 20rem; border:3px solid black" >
           <h4 class="card-header" style="font-weight: bold; font-style: italic; font-family: fantasy;">{{ restaurant.name }}</h4>
-          <div class="card-body">
+          <div class="card-body" style="background-color:rgb(249, 233, 245)">
       {% comment %}
             <h5 class="card-title">
               Cuisine: {{ restaurant.cuisine }}</br></br>
@@ -18,32 +18,35 @@
       {% endcomment %}
         <h6 class="font-weight: bolder; ms-5">Menu</h6>
             <p class="card-text" >
-               </br></br>
+               </br>
 
               
               {% for items in restaurant.menuItems %}
-              {{ items.dishType}}
+              <span style="font-style:italic">{{ items.dishType}}</span>
+                
               </br>
-              {{ items.dishName }}
+              <span style="font-weight:bolder">
+                {{ items.dishName }}
+              </span>
+                
               <span class="ms-5" >{{ items.price}}$</span>
               </br></br>
               {% endfor %}
 
             </p>
-
-            <p class="card-text" style="font-style: italic; " >
+            
+            </div>
+            <p class="card-footer" style="font-style: italic; " >
               </br>Location: {{ restaurant.location }}
+              </br>Owner: {{ restaurant.owner.username }}
             </p>
-            <p class="card-text">
-                </br>Owner: {{ restaurant.owner.username }}
-            </p>
+
 
             {% if restaurant.owner.username == username %}
               <a href="/restaurant/edit/{{restaurant.id}}" class="btn btn-info">
                 View {{ restaurant.name }}
               </a>
             {% endif %}
-          </div>
         </div>
       {% endfor %}
     </div>

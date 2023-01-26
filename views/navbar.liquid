@@ -4,9 +4,15 @@
     <!-- Just an image -->
     <nav class="navbar navbar-light bg-light ml-3"></nav>
     <div class="container-fluid">
-      <a href="/home" class="navbar-brand me-5">Dream Restaurant Buildr</a>
+      <a
+        href="/home"
+        class="navbar-brand me-5"
+        style="font-family: Georgia, serif; font-weight: bolder;">Dream Restaurant Buildr</a>
       {% if loggedIn %}
-        <a href="/restaurant/mine" class="nav-link text-light me-5">Hello {{ username }}
+        <a
+          href="/restaurant/mine"
+          class="nav-link text-light me-5"
+          style="font-family: Georgia, serif; font-weight: bolder; ">Hello {{ username }}
         </a>
       {% endif %}
       <button
@@ -19,7 +25,10 @@
         aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div
+        class="collapse navbar-collapse"
+        id="navbarNav"
+        style="font-family: Georgia, serif; font-weight: bolder; ">
         {% if loggedIn %}
           <a href="/restaurant" class="nav-link text-light me-5">View All</a>
           <a href="/restaurant/new" class="nav-link text-light me-5">New</a>
