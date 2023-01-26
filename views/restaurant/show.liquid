@@ -1,18 +1,45 @@
 {% layout 'layout.liquid' %}
 {% block content %}
   <div>
-    <h2 class="display-6">My Favorite Restaurants</h2>
+    <h2 class="display-6">My SHOW PAGE</h2>
     <div class="row">
-      {% for restaurant in restaurants %}
-        <div class="card" style="width: 24rem;">
+      
+        <div class="card ms-3 mb-3" style="width: 20rem; border:3px solid black; background-color:rgb(235, 233, 233)">
           <h5 class="card-header">{{ restaurant.name }}</h5>
-          <div class="card-body">
-        {% comment %}    
-          <h5 class="card-title">
-              Cuisine: {{ restaurant.cuisine }}</br></br>
-          </h5>
-        {% endcomment %}
-          
+            <div class="card-body">
+                        {% comment %}    
+                          <h5 class="card-title">
+                              Cuisine: {{ restaurant.cuisine }}</br></br>
+                          </h5>
+                        {% endcomment %}
+                <p class="card-text">
+                  </br>Location: {{ restaurant.location }}
+                </p>
+                <p class="card-text">
+                  </br>Owner: {{ restaurant.owner.username }}
+                </p>
+            </div>
+        </div>
+
+        <div class="card ms-3 mb-3" style="width: 20rem; border:3px solid black; background-color:rgb(235, 233, 233)">
+          <label class="form-label">Menu Items:</label></br>
+          <select name="dishType">
+            <option value="Appetizer">Appetizer</option>
+            <option value="Entree">Entree</option>
+            <option value="Dessert">Dessert</option>
+          </select>
+            <input
+              type="text"
+              name="dishName"
+              placeholder="name of dish"
+              class="form-control">
+            <input
+              type="number"
+              name="price"
+              placeholder="price of dish"
+              class="form-control">
+        </div>
+        
             <p class="card-text">
               Menu </br></br> 
 
@@ -23,30 +50,20 @@
               <span class="ms-5">{{ items.price}}$</span>
               </br></br>
               {% endfor %}
+            </p>
 
-            </p>
-            <p class="card-text">
-              </br>Location: {{ restaurant.location }}
-            </p>
-            <p class="card-text">
-                </br>Owner: {{ restaurant.owner.username }}
-            </p>
             <div>
-            <a href="/restaurant/edit/{{ restaurant.id }}" class="btn btn-info" > Edit / Add Menu Items </a>
-              <form action="/restaurant/{{ restaurant.id }}?_method=DELETE" method="POST">
-              <input 
-                  type="submit" 
-                  class="btn btn-danger" 
-                  value="Delete">
-              </form>
+              <a href="/restaurant/edit/{{ restaurant.id }}" class="btn btn-info" > Add Menu Items </a>
+                <form action="/restaurant/{{ restaurant.id }}?_method=DELETE" method="POST">
+                <input 
+                    type="submit" 
+                    class="btn btn-danger" 
+                    value="Delete">
+                </form>
             </div>
 
-        
 
-          </div>
 
-        </div>
-      {% endfor %}
 
 
     </div>
