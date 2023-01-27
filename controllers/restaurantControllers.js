@@ -123,24 +123,21 @@ router.get('/edit/:id', (req, res) => {
 router.put('/:id', (req, res) => {
 	const restaurantId = req.params.id
 	const allinfo = req.body
-	/// tests to get to the menu items id
-	console.log('updating this rest', restaurantId)
+	
+	console.log('updating this rest', allinfo)
 	Restaurant.findById(restaurantId)
 		.then(restaurant => {
-			if (restaurant.owner == req.session.userId) {
-							
+			if (restaurant.owner == req.session.userId) {			
 			restaurant.menuItems.push(allinfo)
 			return restaurant.save()
 			} else {
 				res.redirect(`/error?error=You%20Are%20not%20allowed%20to%20edit%20this%20restaurant`)
 			}
 		})
-		.then(() => {
-			console.log(allinfo)
-			res.redirect(`/restaurant/${restaurantId}`)
+		.then(restaurant => {
+			res.redirect(`/restaurant/${restaurant.id}`)
 		})
 		.catch((error) => {
-			//res.redirect(`/error?error=${error}`)
 			res.redirect(`/error?error=ERROR-%20You%20must%20enter%20a%20dish%20name`)
 		})
 })
