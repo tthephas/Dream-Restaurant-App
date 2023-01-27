@@ -9,7 +9,6 @@ const UserRouter = require('./controllers/userControllers')
 
 // IMPORT MODELS
 const User = require("./models/user")
-const Location = require('./models/location')
 const Restaurant = require('./models/restaurant')
 const MenuItems = require('./models/menuItems')
 //const Seed = require('./models/seed')

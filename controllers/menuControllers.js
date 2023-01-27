@@ -2,7 +2,6 @@
 const express = require('express')
 //const Example = require('../models/restaurant')
 const User = require("../models/user")
-const Location = require('../models/location')
 const Restaurant = require('../models/restaurant')
 const MenuItems = require('../models/menuItems')
 const { restart } = require('nodemon')
