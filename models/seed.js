@@ -57,7 +57,19 @@ db.on('open', () => {
             ],
             location: 'San Diego, CA'
             //owner: { type: Schema.Types.ObjectID, ref: 'User' },
-        }        
+        },   
+        {
+            name: 'SEIs Favorite Cuisine',
+            cuisine: 'Chinese',
+            menuItems: [
+                {dishType:'Appetizer', dishName:'Sweet Potato Fries', price: 10}, 
+                {dishType:'Entree', dishName:'Nam Tok Salad', price: 20}, 
+                {dishType:'Entree', dishName:'Pasta Cacio', price: 20}, 
+                {dishType:'Entree', dishName:'Spring Roll', price: 10}
+            ],
+            location: 'San Diego, CA'
+            //owner: { type: Schema.Types.ObjectID, ref: 'User' },
+        }     
     ]
 
     Restaurant.deleteMany({ owner: null})
