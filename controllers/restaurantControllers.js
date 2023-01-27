@@ -117,7 +117,7 @@ router.get('/edit/:id', (req, res) => {
 })
 
 
-// PUT ROUTE TO UPDATE A RESTAURANT or ADD menu items
+// PUT ROUTE TO ADD menu items
 //  update route
 router.put('/:id', (req, res) => {
 	const restaurantId = req.params.id
@@ -129,8 +129,35 @@ router.put('/:id', (req, res) => {
 			if (restaurant.owner == req.session.userId) {
 		
 			restaurant.menuItems.push(allinfo)
-			console.log(restaurant.menuItems)	
+				
 			return restaurant.save()
+			} else {
+				res.redirect(`/error?error=You%20Are%20not%20allowed%20to%20edit%20this%20restaurant`)
+			}
+		})
+		.then(restaurant => {
+			res.redirect(`/restaurant/${restaurant.id}`)
+		})
+		.catch((error) => {
+			res.redirect(`/error?error=ERROR-%20You%20must%20enter%20a%20dish%20name`)
+		})
+})
+
+// PUT ROUTE TO UPDATE A RESTAURANT info like city name cuisine
+//  update route
+router.put('/edit/:id', (req, res) => {
+	const restaurantId = req.params.id
+	
+	const allinfo = req.body
+	console.log('updating this rest', allinfo)
+	
+	Restaurant.findById(restaurantId)
+		.then(restaurant => {
+			if (restaurant.owner == req.session.userId) {
+				//console.log(restaurant.menuItems)
+				//req.body.menuItems = restaurant.menuItems
+			return restaurant.updateOne(req.body)
+
 			} else {
 				res.redirect(`/error?error=You%20Are%20not%20allowed%20to%20edit%20this%20restaurant`)
 			}
@@ -145,8 +172,9 @@ router.put('/:id', (req, res) => {
 
 
 
-// DELETE route
-router.delete('/:id', (req, res) => {
+// DELETE route 
+// might need one for the /id page if you can delete menu items
+router.delete('/edit/:id', (req, res) => {
 	const restaurantId = req.params.id
 	
 	Restaurant.findById(restaurantId)

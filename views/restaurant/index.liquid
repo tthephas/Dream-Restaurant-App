@@ -31,8 +31,11 @@
 
                 {% if restaurant.owner.username == username %}
                   <a href="/restaurant/edit/{{restaurant.id}}" class="btn btn-warning mb-2">
-                    EDIT {{ restaurant.name }}
+                    EDIT Restaurant Details
                   </a>
+                  <a href="/restaurant/{{restaurant.id}}" class="btn btn-warning mb-2">
+                  ADD Menu Items 
+                </a>
                 {% endif %}
 
             </div>

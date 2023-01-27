@@ -3,7 +3,7 @@ const express = require('express')
 //const Example = require('../models/restaurant')
 const User = require("../models/user")
 const Restaurant = require('../models/restaurant')
-const MenuItems = require('../models/menuItems')
+
 const { restart } = require('nodemon')
 //const Seed = require('../models/seed')
 

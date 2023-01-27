@@ -1,7 +1,7 @@
 {% layout 'layout.liquid' %}
 {% block content %}
   <div class="container-sm">
-    <form action="/restaurant/{{restaurant._id}}?_method=PUT" method="POST">
+    <form action="/restaurant/edit/{{ restaurant._id }}?_method=PUT" method="POST">
       <fieldset>
         <legend>EDIT Restaurant
         </legend>
@@ -24,18 +24,31 @@
           class="form-control"
           style="width: 36rem">
 
-        <label class="form-label mt-3">Menu Items:</label>
 
-        {% for items in restaurant.menuItems %}
-          <input
-            type="text"
-            name="dishName"
-            placeholder="{{ items.dishName }}"
-            value="{{ items.dishName }}"
-            class="form-control"
-            style="width: 36rem">
-        {% endfor %}
+        <input
+          type="hidden"
+          name="dishType"
+          placeholder={{ restaurant.menuItems.dishType }}
+          value={{ restaurant.menuItems.dishType }}
+          class="form-control"
+          style="width: 36rem">
+        <input
+          type="hidden"
+          name="dishName"
+          placeholder={{ restaurant.menuItems.dishName }}
+          value={{ restaurant.menuItems.dishName }}
+          class="form-control"
+          style="width: 36rem">
+        <input
+          type="hidden"
+          name="price"
+          placeholder={{ restaurant.menuItems.price }}
+          value={{ restaurant.menuItems.price }}
+          class="form-control"
+          style="width: 36rem">
 
+
+</br> 
         <label class="form-label">Location:</label>
         <input
           type="text"
@@ -49,7 +62,7 @@
       <input type="submit" class="btn btn-success mt-4">
       <a href="/restaurant/mine" class="btn btn-warning mt-4">Back</a>
     </form>
-    <form action="/restaurant/{{ restaurant.id }}?_method=DELETE" method="POST">
+    <form action="/restaurant/edit/{{ restaurant.id }}?_method=DELETE" method="POST">
       <input
         type="submit"
         class="btn btn-danger mt-3"
