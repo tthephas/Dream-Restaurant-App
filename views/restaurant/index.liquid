@@ -1,19 +1,14 @@
 {% layout 'layout.liquid' %}
   {% block content %}
-
       <div>
-        {% comment %}
-        <h2 class="display-6 ms-5">All Menus</h2>
-        {% endcomment %}
         <div class="row">
           {% for restaurant in restaurants %}
             <div class="card ms-3 mb-3 mt-3" style="width: 18rem; border:3px solid black; background-color:rgb(235, 233, 233)" >
               <h4 class="card-header mt-2" style="font-weight: bold; font-style: italic; font-family: fantasy; text-align:center">{{ restaurant.name }}</h4>
-              <div class="card-body" style="background-color:lightyellow">
+              <div class="card-body"      style="background-color:lightyellow">
 
                 <p class="card-text" style="text-align:center"  >
                   
-
                   {% for items in restaurant.menuItems %}
                   <span style="font-style:italic">{{ items.dishType}}</span>
                     
@@ -27,19 +22,19 @@
                   {% endfor %}
 
                 </p>
-                
-                </div>
+              </div>
+
                 <p class="card-footer" style="font-style: italic; " >
                   Location: {{ restaurant.location }}
                   </br>Owner: {{ restaurant.owner.username }}
                 </p>
 
-
                 {% if restaurant.owner.username == username %}
-                  <a href="/restaurant/edit/{{restaurant.id}}" class="btn btn-info mb-2">
-                    Edit {{ restaurant.name }}
+                  <a href="/restaurant/edit/{{restaurant.id}}" class="btn btn-warning mb-2">
+                    EDIT {{ restaurant.name }}
                   </a>
                 {% endif %}
+
             </div>
           {% endfor %}
         </div>

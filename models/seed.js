@@ -67,7 +67,7 @@ db.on('open', () => {
                 {dishType:'Entree', dishName:'Pasta Cacio', price: 20}, 
                 {dishType:'Entree', dishName:'Spring Roll', price: 10}
             ],
-            location: 'San Diego, CA'
+            location: 'Everywhere, USA'
             //owner: { type: Schema.Types.ObjectID, ref: 'User' },
         }     
     ]

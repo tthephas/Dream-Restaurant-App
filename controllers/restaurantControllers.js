@@ -118,8 +118,8 @@ router.get('/edit/:id', (req, res) => {
 })
 
 
-// PUT ROUTE TO UPDATE A RESTAURANT
-// // update route
+// PUT ROUTE TO UPDATE A RESTAURANT or ADD menu items
+//  update route
 router.put('/:id', (req, res) => {
 	const restaurantId = req.params.id
 	const allinfo = req.body
@@ -127,7 +127,8 @@ router.put('/:id', (req, res) => {
 	console.log('updating this rest', allinfo)
 	Restaurant.findById(restaurantId)
 		.then(restaurant => {
-			if (restaurant.owner == req.session.userId) {			
+			if (restaurant.owner == req.session.userId) {
+			//console.log(restaurant.menuItems.items)			
 			restaurant.menuItems.push(allinfo)
 			return restaurant.save()
 			} else {
@@ -144,7 +145,7 @@ router.put('/:id', (req, res) => {
 
 
 
-// delete route
+// DELETE route
 router.delete('/:id', (req, res) => {
 	const restaurantId = req.params.id
 	

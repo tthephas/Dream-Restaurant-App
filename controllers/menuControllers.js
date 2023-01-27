@@ -11,23 +11,16 @@ const { restart } = require('nodemon')
 // Create router
 const router = express.Router()
 
+
 // ROUTES
-
 // menu items are a sub document. menu items can only be edited by the owner/logged in user. They can be built by the logged in user. 
-
-
 router.put('/:restaurantId', (req, res) => {
 
     const menuItems = req.body.dishName
     console.log('these are the new menu items ', menuItems)
     
     Restaurant.findById(restaurantId)
-        // .then(restaurant => {
-        //     // restaurant.appetizer.push(newApp)
-        //     // restaurant.entree.push(newEnt)
-        //     // restaurant.dessert.push(newDes)
-        //     //return restaurant.save()
-        // })
+
         .then(restaurant => {
             res.redirect(`/restaurant/${restaurant.id}`)
         })

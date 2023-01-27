@@ -3,7 +3,7 @@
   <div class="container-sm">
     <form action="/restaurant/{{restaurant._id}}?_method=PUT" method="POST">
       <fieldset>
-        <legend>EDIT menu items
+        <legend>EDIT Restaurant
         </legend>
 
         <label class="form-label">Name:</label>
@@ -24,26 +24,7 @@
           class="form-control"
           style="width: 36rem">
 
-
-        {% comment %}
-        Create if statement. If there is an app, entree, or dessert, list it here for editing options.
-        This did not work. not populating any items.
-        {% if restaurant.menuItems.dishType.length > 0 %}
-        <input
-        type="text"
-        name="dishType"
-        placeholder="{{ restaurant.menuItems.dishType }}"
-        value="{{ restaurant.menuItems.dishType }}"
-        class="form-control">
-        </br>
-
-        {% endif %}
-        {% endcomment %}
-
-
-
         <label class="form-label mt-3">Menu Items:</label>
-
 
         {% for items in restaurant.menuItems %}
           <input
@@ -53,9 +34,7 @@
             value="{{ items.dishName }}"
             class="form-control"
             style="width: 36rem">
-
         {% endfor %}
-
 
         <label class="form-label">Location:</label>
         <input
@@ -68,7 +47,6 @@
       </fieldset>
 
       <input type="submit" class="btn btn-success mt-4">
-
       <a href="/restaurant/mine" class="btn btn-warning mt-4">Back</a>
     </form>
     <form action="/restaurant/{{ restaurant.id }}?_method=DELETE" method="POST">

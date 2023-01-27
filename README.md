@@ -55,15 +55,15 @@ Sign up OR Log in page
 
 ### Restaurant Routes
 
-| **URL**          | **HTTP Verb**|**Action**|
-|------------------|--------------|----------|
-|   /rest/         | GET          | index  
-|   /rest/:id      | GET          | show       
-|   /rest/new      | GET          | new   
-|   /rest          | POST         | create   
-|   /rest/:id/edit | GET          | edit       
-|   /rest/:id      | PATCH/PUT    | update    
-|   /rest/:id      | DELETE       | destroy  
+| **URL**                | **HTTP Verb**|**Action**|
+|------------------------|--------------|----------|
+|   /restaurant/         | GET          | index  
+|   /restaurant/:id      | GET          | show       
+|   /restaurant/new      | GET          | new   
+|   /restaurant          | POST         | create   
+|   /restaurant/:id/edit | GET          | edit       
+|   /restaurant/:id      | PATCH/PUT    | update    
+|   /restaurant/:id      | DELETE       | destroy  
 
 ### User Routes
 
