@@ -34,7 +34,7 @@ db.on('open', () => {
             //owner: { type: Schema.Types.ObjectID, ref: 'User' },
         },
         {
-            name: 'TJTs Sushi Stop',
+            name: 'TJs Sushi Stop',
             cuisine: 'Sushi',
             menuItems: [
                 {dishType:'Appetizer', dishName:'Edamame', price: 10}, 
@@ -46,7 +46,7 @@ db.on('open', () => {
             //owner: { type: Schema.Types.ObjectID, ref: 'User' },
         },
         {
-            name: 'LEWs Chinese Buffet',
+            name: 'LOUs Chinese Buffet',
             cuisine: 'Chinese',
             menuItems: [
                 {dishType:'Appetizer', dishName:'Beef Skewer', price: 10}, 

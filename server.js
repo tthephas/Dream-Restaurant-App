@@ -33,7 +33,7 @@ app.use('/auth', UserRouter)
 app.use('/restaurant', RestaurantRouter)
 
 // Home route
-app.get('/home', (req, res) => {
+app.get('/', (req, res) => {
     const { username, userId, loggedIn } = req.session
 	res.render('home', { loggedIn, username, userId })
 })
