@@ -1,22 +1,15 @@
 {% layout 'layout.liquid' %}
 {% block content %}
   <div>
+    {% comment %}
     <h2 class="display-6 ms-5">All Menus</h2>
+    {% endcomment %}
     <div class="row">
       {% for restaurant in restaurants %}
-        <div class="card ms-3 mb-3" style="width: 20rem; border:3px solid black; background-color:rgb(235, 233, 233)" >
+        <div class="card ms-3 mb-3 mt-3" style="width: 18rem; border:3px solid black; background-color:rgb(235, 233, 233)" >
           <h4 class="card-header mt-2" style="font-weight: bold; font-style: italic; font-family: fantasy; text-align:center">{{ restaurant.name }}</h4>
           <div class="card-body" style="background-color:lightyellow">
-      {% comment %}
-            <h5 class="card-title">
-              Cuisine: {{ restaurant.cuisine }}</br></br>
-            </h5>
-      
-            
-            styling ideas
-            style="color: red; font-weight: bold; font-size: 2em;"
-            <h6 class="font-weight: bolder; ms-5">Menu</h6>
-          {% endcomment %}
+
             <p class="card-text" style="text-align:center"  >
                
 

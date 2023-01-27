@@ -3,64 +3,57 @@
   <div class="container-sm">
     <form action="/restaurant/{{restaurant._id}}?_method=PUT" method="POST">
       <fieldset>
-        <legend>EDIT menu or ADD menu items </legend>
-        <label class="form-label">Name: 
-        </label>
+        <legend>EDIT menu items
+        </legend>
 
+        <label class="form-label">Name:</label>
         <input
           type="text"
           name="name"
           placeholder="{{ restaurant.name }}"
           value="{{ restaurant.name }}"
           class="form-control">
-        <label class="form-label mt-3">Cuisine:</label>
 
+        <label class="form-label mt-3">Cuisine:</label>
         <input
-          type="text"
+        type="text"
           name="cuisine"
           placeholder="{{ restaurant.cuisine }}"
           value="{{ restaurant.cuisine }}"
           class="form-control">
-          </br>
 
-{% comment %}
-Create if statement. If there is an app, entree, or dessert, list it here for editing options.
-This did not work. not populating any items.
-{% if restaurant.menuItems.dishType.length > 0 %}
-          <input
-          type="text"
-          name="dishType"
-          placeholder="{{ restaurant.menuItems.dishType }}"
-          value="{{ restaurant.menuItems.dishType }}"
-          class="form-control">
-          </br>
 
-{% endif %}
-{% endcomment %}
-        
-        
-        
-          <label class="form-label"> ADD Menu Items</label>
+        {% comment %}
+        Create if statement. If there is an app, entree, or dessert, list it here for editing options.
+        This did not work. not populating any items.
+        {% if restaurant.menuItems.dishType.length > 0 %}
+        <input
+        type="text"
+        name="dishType"
+        placeholder="{{ restaurant.menuItems.dishType }}"
+        value="{{ restaurant.menuItems.dishType }}"
+        class="form-control">
         </br>
 
-        <select name="dishType">
-          <option value="Appetizer">Appetizer</option>
-          <option value="Entree">Entree</option>
-          <option value="Dessert">Dessert</option>
-        </select>
+        {% endif %}
+        {% endcomment %}
+
+
+
+        <label class="form-label mt-3">Menu Items:</label>
+
+
+        {% for items in restaurant.menuItems %}
           <input
             type="text"
-            name="dishName"
-            placeholder="name of dish"
+            name="{{ items.dishType }}"
+            placeholder="{{ items.dishName }}"
+            value="{{ items.dishName }}"
             class="form-control">
-          <input
-            type="number"
-            name="price"
-            placeholder="price of dish"
-            class="form-control">
-            
 
-          </br>
+        {% endfor %}
+
+
         <label class="form-label">Location:</label>
         <input
           type="text"
@@ -70,18 +63,17 @@ This did not work. not populating any items.
 
       </fieldset>
 
-      <input 
-      type="submit" 
-      class="btn btn-success mt-4">
-      
-        <a href="/restaurant/mine" class="btn btn-warning mt-4">Back</a>
-      </form>
-      <form action="/restaurant/{{ restaurant.id }}?_method=DELETE" method="POST">
-      <input 
-          type="submit" 
-          class="btn btn-danger" 
-          value="Delete">
-      </form>
-      
+      <input type="submit" class="btn btn-success mt-4">
+
+      <a href="/restaurant/mine" class="btn btn-warning mt-4">Back</a>
+    </form>
+    <form action="/restaurant/{{ restaurant.id }}?_method=DELETE" method="POST">
+      <input
+        type="submit"
+        class="btn btn-danger mt-3"
+        value="Delete"
+        style="width: 9rem">
+    </form>
+
   </div>
 {% endblock %}
