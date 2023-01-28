@@ -107,6 +107,7 @@ router.get('/addMenu/:id', (req, res) => {
 router.get('/edit/:id', (req, res) => {
 
 	const restaurantId = req.params.id
+	
 	Restaurant.findById(restaurantId)
 		.then(restaurant => {
 			res.render('restaurant/edit', { restaurant, ...req.session })
@@ -127,9 +128,7 @@ router.put('/:id', (req, res) => {
 	Restaurant.findById(restaurantId)
 		.then(restaurant => {
 			if (restaurant.owner == req.session.userId) {
-		
-			restaurant.menuItems.push(allinfo)
-				
+				restaurant.menuItems.push(allinfo)
 			return restaurant.save()
 			} else {
 				res.redirect(`/error?error=You%20Are%20not%20allowed%20to%20edit%20this%20restaurant`)
@@ -147,25 +146,29 @@ router.put('/:id', (req, res) => {
 //  update route
 router.put('/edit/:id', (req, res) => {
 	const restaurantId = req.params.id
-	
-	const allinfo = req.body
-	console.log('updating this rest', allinfo)
-	
+	//console.log(restaurantId)
+	//console.log('owner ', req.session.userId)
 	Restaurant.findById(restaurantId)
 		.then(restaurant => {
+			req.body.menuItems = restaurant.menuItems
+			console.log('updating this rest', req.body)
 			if (restaurant.owner == req.session.userId) {
-				//console.log(restaurant.menuItems)
-				//req.body.menuItems = restaurant.menuItems
+				// console.log(restaurant.menuItems)
+				// req.body.menuItems = restaurant.menuItems
+				
 			return restaurant.updateOne(req.body)
-
+	
 			} else {
 				res.redirect(`/error?error=You%20Are%20not%20allowed%20to%20edit%20this%20restaurant`)
 			}
 		})
-		.then(restaurant => {
-			res.redirect(`/restaurant/${restaurant.id}`)
+		// .then(restaurant => {
+		// })
+		.then(() => {
+			res.redirect(`/restaurant/mine`)
 		})
 		.catch((error) => {
+			console.log(error)
 			res.redirect(`/error?error=ERROR-%20You%20must%20enter%20a%20dish%20name`)
 		})
 })
