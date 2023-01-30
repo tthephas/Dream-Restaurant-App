@@ -60,13 +60,13 @@
 
               </br>
               <form 
-                action="/menus/{{ restaurant._id }}/{{ items._id }}?_method=DELETE" 
+                action="/menus/{{ restaurant._id }}/{{ items.id }}?_method=DELETE" 
                 method="POST">
               <input 
                 class="btn btn-danger mb-3" 
                 type="submit" 
-                style="width: 18rem;"
-                value={{ items._id }}>
+                style="width: 14rem;"
+                value={{ items.id }}>
           </div>
         {% endfor %}
 

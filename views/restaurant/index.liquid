@@ -4,13 +4,12 @@
         <div class="row">
           {% for restaurant in restaurants %}
             
-            <a href="/restaurant/one/{{restaurant.id}}" class="text-decoration-none"
-            style="color:black">
             <div 
             
-              class="card ms-5 mb-3 mt-3" 
-              
-              style="width: 17rem; border:3px solid black; background-color:rgb(235, 233, 233)" >
+            class="card ms-5 mb-3 mt-3" 
+            style="width: 17rem; border:3px solid black; background-color:rgb(235, 233, 233); " >
+            <a href="/restaurant/one/{{restaurant.id}}" class="text-decoration-none stretched-link"
+            style="color:black">
               <h4 
                 class="card-header mt-2" 
                 style="font-weight: bold; font-style: italic; font-family: fantasy; text-align:center">{{ restaurant.name }}</h4>
@@ -43,16 +42,22 @@
                     Location: {{ restaurant.location }}
                     </br>Owner: {{ restaurant.owner.username }}
                     </p>
+                    
                     </a>
-
-                {% if restaurant.owner.username == username %}
-                  <a href="/restaurant/edit/{{restaurant.id}}" class="btn btn-warning mb-2">
+                    {% if restaurant.owner.username == username %}
+                    <a 
+                    href="/restaurant/edit/{{restaurant.id}}" 
+                    class="btn btn-warning mb-2 stretched-link"
+                    style="position: relative" >
                     EDIT Restaurant Details
-                  </a>
-                  <a href="/restaurant/{{restaurant.id}}" class="btn btn-warning mb-2">
-                  ADD Menu Items 
-                  </a>
-
+                    </a>
+                    <a 
+                    href="/restaurant/{{restaurant.id}}" 
+                    class="btn btn-warning mb-2 stretched-link"
+                    style="position: relative" >
+                    ADD Menu Items 
+                    </a>
+                    
                 {% endif %}
                 
             </div>
