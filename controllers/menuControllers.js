@@ -3,6 +3,7 @@ const express = require('express')
 //const Example = require('../models/restaurant')
 const User = require("../models/user")
 const Restaurant = require('../models/restaurant')
+const MenuItems = require('../models/menuItems')
 
 const { restart } = require('nodemon')
 //const Seed = require('../models/seed')
@@ -35,9 +36,9 @@ const router = express.Router()
 
 router.delete('/:restId/:menuId', (req, res) => {
 	//try to isolatte the menus
-    const restId = req.params.restid
+    const restId = req.params.restId
     const menuId = req.params.menuId
-    console.log('trying to delete ', restId)
+    // console.log('trying to delete ', restId)
     console.log('trying to delete ', menuId)
     
     //const menuItemId = req.params.id
@@ -49,7 +50,7 @@ router.delete('/:restId/:menuId', (req, res) => {
 			if (restaurant.owner == req.session.userId) {
                 theMenuItem.remove()
                 restaurant.save()
-                res.redirect(`/restaurant/mine`)
+                res.redirect(`/restaurant/${restId}`)
 			} else {
 				res.redirect(`/error?error=You%20Are%20not%20allowed%20to%20delete%20this%20menu%20item`)
 			}

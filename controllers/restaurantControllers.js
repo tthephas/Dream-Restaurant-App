@@ -114,7 +114,7 @@ router.put('/:id', (req, res) => {
 			if (restaurant.owner == req.session.userId) {
 				restaurant.menuItems.push(allinfo)
 				// this gets full menu item object
-				// console.log("finding menu id ", restaurant.menuItems)
+				console.log("finding menu id ", restaurant.menuItems)
 			return restaurant.save()
 			} else {
 				res.redirect(`/error?error=You%20Are%20not%20allowed%20to%20edit%20this%20restaurant`)
