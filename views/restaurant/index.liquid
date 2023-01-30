@@ -3,8 +3,13 @@
       <div>
         <div class="row">
           {% for restaurant in restaurants %}
+            
+            <a href="/restaurant/one/{{restaurant.id}}" class="text-decoration-none"
+            style="color:black">
             <div 
+            
               class="card ms-5 mb-3 mt-3" 
+              
               style="width: 17rem; border:3px solid black; background-color:rgb(235, 233, 233)" >
               <h4 
                 class="card-header mt-2" 
@@ -13,7 +18,6 @@
                 <div 
                   class="card-body"      
                   style="background-color:lightyellow">
-  
                   <p 
                     class="card-text" 
                     style="text-align:center"  >
@@ -34,15 +38,12 @@
                     {% endfor %}
   
                   </p>
-                </div>
-
-
-
-
-                <p class="card-footer" style="font-style: italic; " >
-                  Location: {{ restaurant.location }}
-                  </br>Owner: {{ restaurant.owner.username }}
-                </p>
+                  </div>
+                  <p class="card-footer" style="font-style: italic; " >
+                    Location: {{ restaurant.location }}
+                    </br>Owner: {{ restaurant.owner.username }}
+                    </p>
+                    </a>
 
                 {% if restaurant.owner.username == username %}
                   <a href="/restaurant/edit/{{restaurant.id}}" class="btn btn-warning mb-2">
@@ -51,12 +52,11 @@
                   <a href="/restaurant/{{restaurant.id}}" class="btn btn-warning mb-2">
                   ADD Menu Items 
                   </a>
-                  <a href="/restaurant/one/{{restaurant.id}}" class="btn btn-warning mb-2">
-                  SHOW FULL
-                  </a>
-                {% endif %}
 
+                {% endif %}
+                
             </div>
+            
           {% endfor %}
         </div>
       </div>
