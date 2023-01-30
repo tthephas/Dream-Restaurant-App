@@ -55,12 +55,12 @@
                     {{ items.dishName }}
                   </span>
                   <span>
-                    {{ items.price}}$
+                    {{ items.price }}$
                   </span>
 
               </br>
               <form 
-                action="/restaurant/{{ restaurant._id }}/{{ items._id }}?_method=DELETE" 
+                action="/menus/{{ restaurant._id }}/{{ items._id }}?_method=DELETE" 
                 method="POST">
               <input 
                 class="btn btn-danger mb-3" 

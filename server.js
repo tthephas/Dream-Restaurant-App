@@ -6,6 +6,7 @@ const express = require("express")
 const middleware = require('./utils/middleware')
 const RestaurantRouter = require('./controllers/restaurantControllers')
 const UserRouter = require('./controllers/userControllers')
+const MenuRouter = require('./controllers/menuControllers')
 
 // IMPORT MODELS
 const User = require("./models/user")
@@ -31,6 +32,7 @@ middleware(app)
 
 app.use('/auth', UserRouter)
 app.use('/restaurant', RestaurantRouter)
+app.use('/restaurant/menus', MenuRouter)
 
 // Home route
 app.get('/', (req, res) => {

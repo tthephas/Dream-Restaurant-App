@@ -36,7 +36,7 @@ router.put('/:restaurantId', (req, res) => {
 router.delete('/:restId/:menuId', (req, res) => {
 	//try to isolatte the menus
     const restId = req.params.restId
-    const menuId = req.body.menuId
+    const menuId = req.params.menuId
     console.log('trying to delete ', restId)
     console.log('trying to delete ', menuId)
     
@@ -44,6 +44,8 @@ router.delete('/:restId/:menuId', (req, res) => {
 	
 	Restaurant.findById(restId)
 		.then(restaurant => {
+            const theMenuItem = restaurant.menuItems.id(menuId)
+            console.log('this is the menu item i want to delete ', theMenuItem)
 			if (restaurant.owner == req.session.userId) {
                 // console.log('trying to delete ', restaurantId)
                 // console.log('trying to delete ', menuId)
@@ -53,7 +55,8 @@ router.delete('/:restId/:menuId', (req, res) => {
 			}
 		})
 		.then(() => {
-			res.redirect(`/restaurant/${restId}`)
+
+			res.redirect(`/restaurant/mine`)
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)

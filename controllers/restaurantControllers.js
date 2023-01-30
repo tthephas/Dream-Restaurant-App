@@ -178,6 +178,24 @@ router.delete('/edit/:id', (req, res) => {
 		})
 })
 
+////    show route for ONE BIG ONE /restaurant/one/{{restaurant.id}}
+// SHOW ROUTE-- GET
+// read,   find and display one resource FULL SCREEN
+router.get('/one/:id', (req, res) => {
+    const id = req.params.id
+
+	
+    Restaurant.findById(id)
+        .populate('owner')
+        .then(restaurant => {
+
+            res.render('restaurant/oneFull', {restaurant, ...req.session})
+        })
+        .catch(err => {
+            console.log(err)
+            res.redirect(`/error?error=${err}`)
+        })
+})
 
 
 // SHOW ROUTE-- GET
