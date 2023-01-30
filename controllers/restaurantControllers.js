@@ -129,6 +129,8 @@ router.put('/:id', (req, res) => {
 		.then(restaurant => {
 			if (restaurant.owner == req.session.userId) {
 				restaurant.menuItems.push(allinfo)
+				// this gets full menu item object
+				// console.log("finding menu id ", restaurant.menuItems)
 			return restaurant.save()
 			} else {
 				res.redirect(`/error?error=You%20Are%20not%20allowed%20to%20edit%20this%20restaurant`)
@@ -146,24 +148,19 @@ router.put('/:id', (req, res) => {
 //  update route
 router.put('/edit/:id', (req, res) => {
 	const restaurantId = req.params.id
-	//console.log(restaurantId)
-	//console.log('owner ', req.session.userId)
+
 	Restaurant.findById(restaurantId)
 		.then(restaurant => {
 			req.body.menuItems = restaurant.menuItems
 			console.log('updating this rest', req.body)
 			if (restaurant.owner == req.session.userId) {
-				// console.log(restaurant.menuItems)
-				// req.body.menuItems = restaurant.menuItems
-				
+
 			return restaurant.updateOne(req.body)
 	
 			} else {
 				res.redirect(`/error?error=You%20Are%20not%20allowed%20to%20edit%20this%20restaurant`)
 			}
 		})
-		// .then(restaurant => {
-		// })
 		.then(() => {
 			res.redirect(`/restaurant/mine`)
 		})
@@ -198,8 +195,9 @@ router.delete('/edit/:id', (req, res) => {
 })
 
 
+
 // SHOW ROUTE-- GET
-// read,   find and display one resource
+// read,   find and display one resource, aka the "ADD menu items page"
 router.get('/:id', (req, res) => {
     const id = req.params.id
 	
@@ -214,6 +212,8 @@ router.get('/:id', (req, res) => {
             res.redirect(`/error?error=${err}`)
         })
 })
+
+
 
 
 // Export the Router
