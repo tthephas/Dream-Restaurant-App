@@ -85,22 +85,6 @@ router.get('/mine', (req, res) => {
 })
 
 
-/// GET for adding menu items
-// index that shows only the user's examples
-router.get('/addMenu/:id', (req, res) => {
-    // destructure user info from req.session
-    const restaurantId = req.params.id
-	Restaurant.findById(restaurantId)
-		
-		.then(restaurant => {
-			res.render('restaurant/addMenu', { restaurant, ...req.session})
-		})
-		.catch(error => {
-			res.redirect(`/error?error=${error}`)
-		})
-})
-
-
 
 // GET route
 // edit route -> GET that takes us to the edit form view

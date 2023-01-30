@@ -3,26 +3,41 @@
       <div>
         <div class="row">
           {% for restaurant in restaurants %}
-            <div class="card ms-5 mb-3 mt-3" style="width: 17rem; border:3px solid black; background-color:rgb(235, 233, 233)" >
-              <h4 class="card-header mt-2" style="font-weight: bold; font-style: italic; font-family: fantasy; text-align:center">{{ restaurant.name }}</h4>
-              <div class="card-body"      style="background-color:lightyellow">
+            <div 
+              class="card ms-5 mb-3 mt-3" 
+              style="width: 17rem; border:3px solid black; background-color:rgb(235, 233, 233)" >
+              <h4 
+                class="card-header mt-2" 
+                style="font-weight: bold; font-style: italic; font-family: fantasy; text-align:center">{{ restaurant.name }}</h4>
 
-                <p class="card-text" style="text-align:center"  >
-                  
-                  {% for items in restaurant.menuItems %}
-                  <span style="font-style:italic">{{ items.dishType}}</span>
+                <div 
+                  class="card-body"      
+                  style="background-color:lightyellow">
+  
+                  <p 
+                    class="card-text" 
+                    style="text-align:center"  >
                     
-                  </br>
-                  <span style="font-weight:bolder">
-                    {{ items.dishName }}
-                  </span>
-                  </br>
-                  <span >{{ items.price}}$</span>
-                  </br></br>
-                  {% endfor %}
+                    {% for items in restaurant.menuItems %}
+                    <span 
+                      style="font-style:italic">{{ items.dishType}}</span>
+                      
+                    </br>
+                    <span 
+                      style="font-weight:bolder">
+                      {{ items.dishName }}
+                    </span>
+                    </br>
+                    <span 
+                      >{{ items.price}}$</span>
+                    </br></br>
+                    {% endfor %}
+  
+                  </p>
+                </div>
 
-                </p>
-              </div>
+
+
 
                 <p class="card-footer" style="font-style: italic; " >
                   Location: {{ restaurant.location }}
