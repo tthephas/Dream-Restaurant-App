@@ -74,6 +74,7 @@ db.on('open', () => {
 
     Restaurant.deleteMany({ owner: null})
         .then(() => {
+            
             Restaurant.create(startRestaurant)
                 .then(data => {
                     console.log('Here are some created restaurants', data)
@@ -85,8 +86,8 @@ db.on('open', () => {
         .catch(err => {
             console.log(err)
             db.close()
+            })
         })
-    })
 })
 
 
