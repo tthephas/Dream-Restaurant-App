@@ -23,7 +23,7 @@ router.use((req, res, next) => {
 	}
 })
 
-// Routes
+// ROUTES SECTIONS //
 
 
 // GET

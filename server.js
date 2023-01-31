@@ -1,7 +1,7 @@
 ////////////////////
 //  Dependencies  //
 ////////////////////
-require("dotenv").config() // make env variables available
+require('dotenv').config() // make env variables available
 const express = require("express")
 const middleware = require('./utils/middleware')
 const RestaurantRouter = require('./controllers/restaurantControllers')
@@ -9,7 +9,7 @@ const UserRouter = require('./controllers/userControllers')
 const MenuRouter = require('./controllers/menuControllers')
 
 // IMPORT MODELS
-const User = require("./models/user")
+const User = require('./models/user')
 const Restaurant = require('./models/restaurant')
 const MenuItems = require('./models/menuItems')
 //const Seed = require('./models/seed')
@@ -22,7 +22,7 @@ const path = require('path')
 //////////////////////////////
 // Middleware + App Object  //
 //////////////////////////////
-const app = require("liquid-express-views")(express())
+const app = require('liquid-express-views')(express())
 
 middleware(app)
 

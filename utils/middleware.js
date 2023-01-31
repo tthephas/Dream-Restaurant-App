@@ -2,11 +2,11 @@
 // Dependencies
 /////////////////////////////////
 require('dotenv').config()
-const express = require('express')
-const morgan = require('morgan')
-const methodOverride = require('method-override')
-const session = require('express-session')
-const MongoStore = require('connect-mongo')
+const express = require('express')  // Import express framework
+const morgan = require('morgan')	// Import the morgan request logger
+const methodOverride = require('method-override')  //Allow us to interact with liquid forms
+const session = require('express-session')  // Import the express package
+const MongoStore = require('connect-mongo')  // Import connect mongo package for sessions
 const mongoose = require('mongoose')
 
 /////////////////////////////////
