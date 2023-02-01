@@ -10,8 +10,7 @@ The Dream Restaurant application will allow users to build their dream restauran
   - As a user, I want the ability to sign up.
   - As a user, I want the ability to sign in. 
   - As a user, I want the ability to sign out. 
-  - As a user, I want the ability to create my own dream restaurants. 
-  - As a user, I want the ability to create my own menus. 
+  - As a user, I want the ability to create my own dream restaurant menus. 
   - As a user, I want the ability to pick my own appetizers, entrees, and desserts. 
   - As a user, I want the ability to locate my restaurant anywhere in the world.
   - As a user, I want the ability to see other restaurants for potential ideas.
