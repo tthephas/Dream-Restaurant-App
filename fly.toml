@@ -12,6 +12,8 @@ processes = []
   PORT = "8080"
   SECRET = "imgonnabuildanewrestaurantdbthisweek"
   DATABASE_URL = "mongodb+srv://thepjos:4ker2ns0@cluster0.x5cdogj.mongodb.net/Dream_Restaurant?retryWrites=true&w=majority"
+  MONGO_DEV_URI=mongodb://localhost/Dream_Restaurant
+  CLIENT_ORIGIN = "this will be the front end's deployed application"
 
 [experimental]
   auto_rollback = true
